@@ -1,7 +1,11 @@
 import os
 import json
 
+# @TODO - rewrite this entire thing in a typed language -- this is already spaghetti
+# @TODO - dump everything into a sqlite db and make a fe web app to explore the data
+
 gossip_out_directory = "/home/ubuntu/gossip-out"
+
 # map of ips to node pubkeys seen at that ip
 ips_map = {}
 # map of node pubkeys to ips seen for that node
@@ -28,6 +32,8 @@ for validator in active_validators:
     if validator["activatedStake"] > 0:
         staked_validators.append(validator["identityPubkey"])
 
+potential_sybil_ips = set()
+
 record_index = 0
 # we should be reading the records in order of time
 records = os.listdir(gossip_out_directory)
@@ -40,18 +46,28 @@ for name in records:
         for node in nodes:
             ip = node["ipAddress"]
             pubkey = node["identityPubkey"]
+            if ip not in ips_map:
+                ips_map[ip] = [{"pubkey": pubkey, "is_staked": pubkey in staked_validators}]
+            elif ips_map[ip][-1]["pubkey"] != pubkey:
+                # print("pubkey for ip " + ip + " changed from " + json.dumps(ips_map[ip][-1]) + " to " + pubkey)
+                ips_map[ip].append({"pubkey": pubkey, "is_staked": pubkey in staked_validators})
+                potential_sybil_ips.add(ip)
             # only checked staked validators
             if pubkey in staked_validators:
-                if ip not in ips_map:
-                    ips_map[ip] = [pubkey]
                 # we want to check if there is some validator that shares a hotswap ip
                 # this if statement will not trigger if there is a hotswap back and forth between just two validators
-                elif ips_map[ip][-1] != pubkey:
-                    print("pubkey for ip " + ip + " changed from " + ips_map[ip][-1] + " to " + pubkey)
-                    ips_map[ip].append(pubkey)
                 if pubkey in pubkeys_map and ip != pubkeys_map[pubkey]:
                     print("staked validator " + pubkey + " found at new ip " + ip + " with previous ip " + pubkeys_map[pubkey])
                 pubkeys_map[pubkey] = ip
     record_index += 1
+
+for ip in potential_sybil_ips:
+    # it's only a machine shared by sybils if there are multiple staked identities for that ip
+    staked_pubkeys = set()
+    for identity in ips_map[ip]:
+        if identity["is_staked"]:
+            staked_pubkeys.add(identity["pubkey"])
+    if len(staked_pubkeys) > 1:
+        print("potential sybil ip: " + ip + " with staked identities: " + str(staked_pubkeys))
 
 print("analyzed " + str(record_index) + " gossip validator list records against a set of " + str(len(staked_validators)) + " staked validators")

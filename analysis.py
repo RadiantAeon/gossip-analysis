@@ -2,7 +2,10 @@ import os
 import json
 
 gossip_out_directory = "/home/ubuntu/gossip-out"
-node_ips = {}
+# map of ips to node pubkeys seen at that ip
+ips_map = {}
+# map of node pubkeys to ips seen for that node
+pubkeys_map = {}
 
 # gossip files in the `gossip_out_directory` are output from `solana gossip`
 # each file contains a list of nodes in JSON format like so:
@@ -25,18 +28,30 @@ for validator in active_validators:
     if validator["activatedStake"] > 0:
         staked_validators.append(validator["identityPubkey"])
 
-for name in os.listdir(gossip_out_directory):
+record_index = 0
+# we should be reading the records in order of time
+records = os.listdir(gossip_out_directory)
+records.sort()
+for name in records:
     # Open file
+    # print("checking record " + name)
     with open(os.path.join(gossip_out_directory, name)) as f:
         nodes = json.loads(f.read())
         for node in nodes:
             ip = node["ipAddress"]
             pubkey = node["identityPubkey"]
-            # we want to detect if a staked validator shares a hotswap ip
-            # so if a validator that keeps changing their ip(maybe they have a dynamic ip), we ignore that
+            # only checked staked validators
             if pubkey in staked_validators:
-                if ip not in node_ips:
-                    node_ips[ip] = [pubkey]
-                elif node_ips[ip][-1] != pubkey:
-                    print("pubkey for ip " + ip + " changed from " + node_ips[ip][-1] + " to " + pubkey)
-                    node_ips[ip].append(pubkey)
+                if ip not in ips_map:
+                    ips_map[ip] = [pubkey]
+                # we want to check if there is some validator that shares a hotswap ip
+                # this if statement will not trigger if there is a hotswap back and forth between just two validators
+                elif ips_map[ip][-1] != pubkey:
+                    print("pubkey for ip " + ip + " changed from " + ips_map[ip][-1] + " to " + pubkey)
+                    ips_map[ip].append(pubkey)
+                if pubkey in pubkeys_map and ip != pubkeys_map[pubkey]:
+                    print("staked validator " + pubkey + " found at new ip " + ip + " with previous ip " + pubkeys_map[pubkey])
+                pubkeys_map[pubkey] = ip
+    record_index += 1
+
+print("analyzed " + str(record_index) + " gossip validator list records against a set of " + str(len(staked_validators)) + " staked validators")

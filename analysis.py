@@ -25,9 +25,9 @@ for validator in active_validators:
     if validator["activatedStake"] > 0:
         staked_validators.append(validator["identityPubkey"])
 
-for name in os.listdir(directory):
+for name in os.listdir(gossip_out_directory):
     # Open file
-    with open(os.path.join(directory, name)) as f:
+    with open(os.path.join(gossip_out_directory, name)) as f:
         nodes = json.loads(f.read())
         for node in nodes:
             ip = node["ipAddress"]

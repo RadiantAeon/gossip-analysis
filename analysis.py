@@ -28,9 +28,12 @@ active_validators = json.loads(open("active_validators.json").read())["validator
 
 # store a list of staked validators
 staked_validators = []
+staked_validators_map = {}
 for validator in active_validators:
     if validator["activatedStake"] > 0:
         staked_validators.append(validator["identityPubkey"])
+        validator["activatedStakeUI"] = validator["activatedStake"] / 10 ** 9
+        staked_validators_map[validator["identityPubkey"]] = validator
 
 potential_sybil_ips = set()
 
@@ -47,10 +50,10 @@ for name in records:
             ip = node["ipAddress"]
             pubkey = node["identityPubkey"]
             if ip not in ips_map:
-                ips_map[ip] = [{"pubkey": pubkey, "is_staked": pubkey in staked_validators}]
+                ips_map[ip] = [{"pubkey": pubkey, "is_staked": pubkey in staked_validators, "timestamp": name}]
             elif ips_map[ip][-1]["pubkey"] != pubkey:
                 # print("pubkey for ip " + ip + " changed from " + json.dumps(ips_map[ip][-1]) + " to " + pubkey)
-                ips_map[ip].append({"pubkey": pubkey, "is_staked": pubkey in staked_validators})
+                ips_map[ip].append({"pubkey": pubkey, "is_staked": pubkey in staked_validators, "timestamp": name})
                 potential_sybil_ips.add(ip)
             # only checked staked validators
             if pubkey in staked_validators:
@@ -61,6 +64,7 @@ for name in records:
                 pubkeys_map[pubkey] = ip
     record_index += 1
 
+output = []
 for ip in potential_sybil_ips:
     # it's only a machine shared by sybils if there are multiple staked identities for that ip
     staked_pubkeys = set()
@@ -68,6 +72,10 @@ for ip in potential_sybil_ips:
         if identity["is_staked"]:
             staked_pubkeys.add(identity["pubkey"])
     if len(staked_pubkeys) > 1:
-        print("potential sybil ip: " + ip + " with staked identities: " + str(staked_pubkeys))
+        staked_validators_for_this_ip = [staked_validators_map[pk] for pk in staked_pubkeys]
+        output.append({ "ip" : ip, "identities": ips_map[ip], "staked_identities": list(staked_pubkeys), "validators_info": staked_validators_for_this_ip, "total_stakeUI": sum([staked_validators_map[pk]["activatedStakeUI"] for pk in staked_pubkeys]) })
+of = open("sybil_analysis_output.json", "w+")
+of.write(json.dumps(output, indent=4))
+of.close()
 
 print("analyzed " + str(record_index) + " gossip validator list records against a set of " + str(len(staked_validators)) + " staked validators")

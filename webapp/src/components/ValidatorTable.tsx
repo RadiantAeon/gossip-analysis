@@ -39,6 +39,17 @@ export function ValidatorTable({ data }: ValidatorTableProps) {
       width: 100, 
       type: 'boolean' 
     },
+    { 
+      field: 'sfdp_participant', 
+      headerName: 'SFDP', 
+      width: 100, 
+      type: 'boolean' 
+    },
+    { 
+      field: 'sfdp_status', 
+      headerName: 'SFDP Status', 
+      width: 120 
+    },
     { field: 'version', headerName: 'Version', width: 120 },
     { field: 'skipRate', headerName: 'Skip Rate', width: 120, type: 'number',
       valueFormatter: (params) => {

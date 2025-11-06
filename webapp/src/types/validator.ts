@@ -20,6 +20,8 @@ export interface ValidatorInfo {
   jito_stakepool: boolean;
   jito_stake: number;
   jito_stake_ui: number;
+  sfdp_participant: boolean;
+  sfdp_status: string;
 }
 
 export interface IpData {

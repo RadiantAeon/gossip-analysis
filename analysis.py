@@ -1,5 +1,12 @@
+#!/usr/bin/python3
 import os
 import json
+
+# change working directory to this script's directory
+abspath = os.path.abspath(__file__)
+dname = os.path.dirname(abspath)
+os.chdir(dname)
+
 
 # @TODO - rewrite this entire thing in a typed language -- this is already spaghetti
 # @TODO - dump everything into a sqlite db and make a fe web app to explore the data
@@ -29,6 +36,9 @@ active_validators = json.loads(open("active_validators.json").read())["validator
 # jito_validators.json is output from `curl -X POST https://kobe.mainnet.jito.network/api/v1/jitosol_validators -H 'Content-Type: application/json' | jq > jito_validators.json`
 jito_validators = json.loads(open("jito_validators.json").read())["validators"]
 
+# sfdp_participants.json is output from `wget https://api.solana.org/api/community/v1/sfdp_participants`
+sfdp_participants = json.loads(open("sfdp_participants.json").read())
+
 # store a list of staked validators
 staked_validators = []
 staked_validators_map = {}
@@ -37,9 +47,16 @@ for validator in active_validators:
         staked_validators.append(validator["identityPubkey"])
         validator["activatedStakeUI"] = validator["activatedStake"] / 10 ** 9
         validator["jito_stakepool"] = False
+        validator["sfdp_participant"] = False
+        validator["sfdp_status"] = None
         for jito_validator in jito_validators:
             if jito_validator["vote_account"] == validator["voteAccountPubkey"]:
                 validator["jito_stakepool"] = True
+                break
+        for sfdp_participant in sfdp_participants:
+            if sfdp_participant["mainnetBetaPubkey"] == validator["identityPubkey"]:
+                validator["sfdp_participant"] = True
+                validator["sfdp_status"] = sfdp_participant["state"]
                 break
         staked_validators_map[validator["identityPubkey"]] = validator
 

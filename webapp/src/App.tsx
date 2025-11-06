@@ -4,7 +4,6 @@ import data from '../../sybil_analysis_output.json'
 import { ValidatorTable } from './components/ValidatorTable';
 import { ValidatorPieChart } from './components/ValidatorPieChart';
 import { StakeDistribution } from './components/StakeDistribution';
-import { IdentityTimeline } from './components/IdentityTimeline';
 
 export default function App() {
   const [selectedIp, setSelectedIp] = useState<string | null>(null);
@@ -32,13 +31,6 @@ export default function App() {
             selectedIp={selectedIp}
             onIpSelect={setSelectedIp}
           />
-        </Box>
-
-        <Box mb={4}>
-          <Typography variant="h5" gutterBottom>
-            {selectedIp ? `Identity Timeline for ${selectedIp}` : 'Identity Timeline'}
-          </Typography>
-          <IdentityTimeline data={filteredData} />
         </Box>
 
         <Box>

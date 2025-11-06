@@ -7,11 +7,6 @@ interface ValidatorTableProps {
   data: ValidatorData;
 }
 
-interface ValidatorRow extends ValidatorInfo {
-  id: string;
-  ip: string;
-}
-
 export function ValidatorTable({ data }: ValidatorTableProps) {
   const rows = useMemo(() => {
     return data.flatMap(ipData => 
@@ -38,6 +33,12 @@ export function ValidatorTable({ data }: ValidatorTableProps) {
         maximumFractionDigits: 2
       })
     },
+    { 
+      field: 'jito_stakepool', 
+      headerName: 'Jito Pool', 
+      width: 100, 
+      type: 'boolean' 
+    },
     { field: 'version', headerName: 'Version', width: 120 },
     { field: 'skipRate', headerName: 'Skip Rate', width: 120, type: 'number',
       valueFormatter: (params) => {
@@ -50,7 +51,7 @@ export function ValidatorTable({ data }: ValidatorTableProps) {
 
   return (
     <Paper elevation={2}>
-      <Box height={600}>
+      <Box height={600} sx={{ width: '100%' }}>
         <DataGrid
           rows={rows}
           columns={columns}
@@ -61,6 +62,20 @@ export function ValidatorTable({ data }: ValidatorTableProps) {
           }}
           density="compact"
           disableRowSelectionOnClick
+          sx={{
+            '& .MuiDataGrid-main': {
+              overflow: 'unset'
+            },
+            '& .MuiDataGrid-columnHeaders': {
+              position: 'sticky',
+              top: 0,
+              zIndex: 1,
+              backgroundColor: 'background.paper'
+            },
+            '& .MuiDataGrid-virtualScroller': {
+              overflow: 'auto'
+            }
+          }}
         />
       </Box>
     </Paper>

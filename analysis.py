@@ -37,13 +37,9 @@ for validator in active_validators:
         staked_validators.append(validator["identityPubkey"])
         validator["activatedStakeUI"] = validator["activatedStake"] / 10 ** 9
         validator["jito_stakepool"] = False
-        validator["jito_stake"] = 0
-        validator["jito_stake_ui"] = 0
         for jito_validator in jito_validators:
             if jito_validator["vote_account"] == validator["voteAccountPubkey"]:
                 validator["jito_stakepool"] = True
-                validator["jito_stake"] = jito_validator["active_stake"]
-                validator["jito_stake_ui"] = jito_validator["active_stake"] / 10 ** 9
                 break
         staked_validators_map[validator["identityPubkey"]] = validator
 

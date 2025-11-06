@@ -17,6 +17,9 @@ export interface ValidatorInfo {
   delinquent: boolean;
   skipRate: number | null;
   activatedStakeUI: number;
+  jito_stakepool: boolean;
+  jito_stake: number;
+  jito_stake_ui: number;
 }
 
 export interface IpData {

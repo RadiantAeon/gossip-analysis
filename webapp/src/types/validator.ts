@@ -19,7 +19,7 @@ export interface ValidatorInfo {
   activatedStakeUI: number;
   jito_stakepool: boolean;
   jito_stake: number;
-  jito_stake_ui: number;
+  jito_stakeUI: number;
   sfdp_participant: boolean;
   sfdp_status: string;
 }

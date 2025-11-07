@@ -40,6 +40,19 @@ export function ValidatorTable({ data }: ValidatorTableProps) {
       type: 'boolean' 
     },
     { 
+      field: 'jito_stakeUI', 
+      headerName: 'Jito Stake (SOL)', 
+      width: 150, 
+      type: 'number',
+      valueFormatter: (params) => {
+        if (!params.value) return 'N/A';
+        return params.value.toLocaleString(undefined, {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        });
+      }
+    },
+    { 
       field: 'sfdp_participant', 
       headerName: 'SFDP', 
       width: 100, 

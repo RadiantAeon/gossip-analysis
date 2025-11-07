@@ -47,11 +47,15 @@ for validator in active_validators:
         staked_validators.append(validator["identityPubkey"])
         validator["activatedStakeUI"] = validator["activatedStake"] / 10 ** 9
         validator["jito_stakepool"] = False
+        validator["jito_stake"] = 0
+        validator["jito_stakeUI"] = 0
         validator["sfdp_participant"] = False
         validator["sfdp_status"] = None
         for jito_validator in jito_validators:
             if jito_validator["vote_account"] == validator["voteAccountPubkey"]:
                 validator["jito_stakepool"] = True
+                validator["jito_stake"] = jito_validator["jito_sol_active_lamports"]
+                validator["jito_stakeUI"] = jito_validator["jito_sol_active_lamports"] / 10 ** 9
                 break
         for sfdp_participant in sfdp_participants:
             if sfdp_participant["mainnetBetaPubkey"] == validator["identityPubkey"]:

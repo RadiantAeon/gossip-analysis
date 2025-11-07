@@ -26,7 +26,8 @@ type SortOption =
   | 'identities'
   | 'ip'
   | 'jito stakepool validators'
-  | 'jito stake';
+  | 'jito stake'
+  | 'sfdp participants';
 
 export function StakeDistribution({ data, onIpSelect, selectedIp }: StakeDistributionProps) {
   const [sortBy, setSortBy] = useState<SortOption>('stake');
@@ -35,9 +36,9 @@ export function StakeDistribution({ data, onIpSelect, selectedIp }: StakeDistrib
     const total = data.reduce((sum, item) => sum + item.total_stakeUI, 0);
     const items = data.map(item => {
       const jitoValidators = item.validators_info.filter(v => v.jito_stakepool);
+      const sfdpValidators = item.validators_info.filter(v => v.sfdp_status === 'Approved');
 
-      // Sum Jito stake across validators for this IP.
-      // Supports either `jito_stake_ui` (snake_case) or `jito_stakeUI` (camelCase) to be resilient.
+      // Sum Jito stake across validators for this IP (handles both camel/snake just in case)
       const jitoStake =
         item.validators_info.reduce((sum, v) => {
           const val = (v as any).jito_stake_ui ?? (v as any).jito_stakeUI ?? 0;
@@ -52,6 +53,7 @@ export function StakeDistribution({ data, onIpSelect, selectedIp }: StakeDistrib
         stakedIdentities: item.staked_identities.length,
         jitoValidatorCount: jitoValidators.length,
         jitoStake,
+        sfdpValidatorCount: sfdpValidators.length,
         originalData: item
       };
     });
@@ -68,6 +70,8 @@ export function StakeDistribution({ data, onIpSelect, selectedIp }: StakeDistrib
           return b.jitoValidatorCount - a.jitoValidatorCount;
         case 'jito stake':
           return b.jitoStake - a.jitoStake;
+        case 'sfdp participants':
+          return b.sfdpValidatorCount - a.sfdpValidatorCount;
         case 'ip':
           return a.ip.localeCompare(b.ip);
         default:
@@ -107,6 +111,7 @@ export function StakeDistribution({ data, onIpSelect, selectedIp }: StakeDistrib
             <ToggleButton value="identities">Identities</ToggleButton>
             <ToggleButton value="jito stakepool validators">Jito stakepool validators</ToggleButton>
             <ToggleButton value="jito stake">Jito stake</ToggleButton>
+            <ToggleButton value="sfdp approved">SFDP</ToggleButton>
             <ToggleButton value="ip">IP</ToggleButton>
           </ToggleButtonGroup>
         </Stack>
@@ -160,6 +165,9 @@ export function StakeDistribution({ data, onIpSelect, selectedIp }: StakeDistrib
                             minimumFractionDigits: 2,
                             maximumFractionDigits: 2
                           })} SOL</strong>
+                        </Typography>
+                        <Typography variant="body2" component="span">
+                          SFDP: <strong>{item.sfdpValidatorCount}</strong> approved
                         </Typography>
                       </Stack>
                     }

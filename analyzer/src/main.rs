@@ -1,13 +1,12 @@
 use anyhow::{Context, Result};
+use clap::Parser;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use solana_cli_output::CliGossipNodes;
-use std::collections::{HashMap, HashSet};
+use std::collections::{HashMap, HashSet, VecDeque};
 use std::fs::{self, File};
 use std::io::Write;
 use std::path::PathBuf;
-use clap::Parser;
-
 
 /// CLI for analyzer
 #[derive(Parser, Debug)]
@@ -71,7 +70,7 @@ struct JitoValidator {
     running_bam: bool,
     active_stake: u64,
     jito_sol_active_lamports: u64,
-    mev_commission_bps: u64,
+    mev_commission_bps: Option<u64>,
     priority_fee_commission_bps: u64,
 }
 
@@ -117,6 +116,15 @@ struct SybilOutputItem {
     total_stake_ui: f64,
 }
 
+#[derive(Debug, Serialize)]
+struct SybilCluster {
+    ips: Vec<String>,
+    identities: Vec<IdentityRecord>,
+    staked_identities: Vec<String>,
+    validators_info: Vec<ValidatorInfoOut>,
+    total_stake_ui: f64,
+}
+
 fn main() -> Result<()> {
     let args = Args::parse();
 
@@ -128,8 +136,7 @@ fn main() -> Result<()> {
     let active_validators_json = fs::read_to_string(&args.active_validators)
         .with_context(|| format!("reading {}", args.active_validators.display()))?;
     let active_validators: ActiveValidatorsFile =
-        serde_json::from_str(&active_validators_json)
-            .context("parsing active_validators.json")?;
+        serde_json::from_str(&active_validators_json).context("parsing active_validators.json")?;
 
     // Load jito_validators.json
     let jito_json = fs::read_to_string(&args.jito_validators)
@@ -172,7 +179,8 @@ fn main() -> Result<()> {
 
                 if let Some(jv) = jito_by_vote.get(&v.vote_account_pubkey) {
                     jito_pool = true;
-                    jito_stake_ui = (jv.jito_sol_active_lamports as f64) / 1e9;
+                    jito_stake = jv.jito_sol_active_lamports;
+                    jito_stake_ui = if jito_stake == 0 { 0.0 } else {(jito_stake as f64) / 1e9};
                 }
 
                 // SFDP
@@ -208,7 +216,9 @@ fn main() -> Result<()> {
 
     // Read gossip records directory, iterate sorted file names
     let mut filenames: Vec<PathBuf> = Vec::new();
-    for entry in fs::read_dir(&args.gossip_dir).with_context(|| format!("reading {}", args.gossip_dir.display()))? {
+    for entry in fs::read_dir(&args.gossip_dir)
+        .with_context(|| format!("reading {}", args.gossip_dir.display()))?
+    {
         let e = entry?;
         let path = e.path();
         if path.is_file() {
@@ -273,15 +283,14 @@ fn main() -> Result<()> {
         record_index += 1;
     }
 
-    // Build output for potential sybil ips that actually host multiple staked validators
-    let mut output: Vec<SybilOutputItem> = Vec::new();
+    // Build per-IP output for potential sybil ips that actually host multiple staked validators
+    let mut per_ip: Vec<SybilOutputItem> = Vec::new();
 
     for ip in potential_sybil_ips.into_iter() {
-        let identities = ips_map.get(&ip);
-        if identities.is_none() {
-            continue;
-        }
-        let identities = identities.unwrap();
+        let identities = match ips_map.get(&ip) {
+            Some(v) => v,
+            None => continue,
+        };
 
         let mut staked_pubkeys: HashSet<String> = HashSet::new();
         for identity in identities.iter() {
@@ -310,17 +319,93 @@ fn main() -> Result<()> {
                 identities: identities.clone(),
                 staked_identities,
                 validators_info,
-                total_stake_ui: total_stake_ui,
+                total_stake_ui,
             };
 
-            output.push(out_item);
+            per_ip.push(out_item);
         }
+    }
+
+    // Build clusters of IPs that share any staked identities
+    let mut clusters: Vec<SybilCluster> = Vec::new();
+    let mut visited = vec![false; per_ip.len()];
+
+    for i in 0..per_ip.len() {
+        if visited[i] {
+            continue;
+        }
+
+        let mut queue = VecDeque::new();
+        let mut indices_in_cluster = Vec::new();
+
+        visited[i] = true;
+        queue.push_back(i);
+
+        while let Some(idx) = queue.pop_front() {
+            indices_in_cluster.push(idx);
+
+            // For each other IP, if it shares any staked identity with this one, join the cluster
+            for j in 0..per_ip.len() {
+                if visited[j] {
+                    continue;
+                }
+
+                // Check if per_ip[idx] and per_ip[j] share at least one staked identity
+                let a = &per_ip[idx].staked_identities;
+                let b = &per_ip[j].staked_identities;
+
+                let shares_identity = a.iter().any(|pk| b.contains(pk));
+                if shares_identity {
+                    visited[j] = true;
+                    queue.push_back(j);
+                }
+            }
+        }
+
+        // Merge all SybilOutputItem in this connected component into one cluster
+        let mut ips_set: HashSet<String> = HashSet::new();
+        let mut identities: Vec<IdentityRecord> = Vec::new();
+        let mut staked_ids_set: HashSet<String> = HashSet::new();
+        let mut validators_map: HashMap<String, ValidatorInfoOut> = HashMap::new();
+        let mut total_stake_ui: f64 = 0.0;
+
+        for idx in indices_in_cluster {
+            let item = &per_ip[idx];
+
+            ips_set.insert(item.ip.clone());
+            identities.extend(item.identities.clone());
+
+            for pk in &item.staked_identities {
+                staked_ids_set.insert(pk.clone());
+            }
+
+            for v in &item.validators_info {
+                validators_map
+                    .entry(v.identity_pubkey.clone())
+                    .or_insert_with(|| v.clone());
+            }
+        }
+
+        // Compute total stake as sum over unique validators
+        for v in validators_map.values() {
+            if let Some(ui) = v.activated_stake_ui {
+                total_stake_ui += ui;
+            }
+        }
+
+        clusters.push(SybilCluster {
+            ips: ips_set.into_iter().collect(),
+            identities,
+            staked_identities: staked_ids_set.into_iter().collect(),
+            validators_info: validators_map.into_values().collect(),
+            total_stake_ui,
+        });
     }
 
     // Write sybil_analysis_output.json
     let mut of = File::create("sybil_analysis_output.json")
         .context("creating sybil_analysis_output.json")?;
-    let pretty = serde_json::to_string_pretty(&output).context("serializing output")?;
+    let pretty = serde_json::to_string_pretty(&clusters).context("serializing output")?;
     of.write_all(pretty.as_bytes())
         .context("writing sybil_analysis_output.json")?;
 

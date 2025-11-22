@@ -1,22 +1,33 @@
 import { useState, useEffect } from 'react';
 import { Box, Container, Typography } from '@mui/material';
-import data from '../../sybil_analysis_output.json'
+import rawData from '../../sybil_analysis_output.json';
 import { ValidatorTable } from './components/ValidatorTable';
 import { ValidatorPieChart } from './components/ValidatorPieChart';
 import { StakeDistribution } from './components/StakeDistribution';
+import { ValidatorData } from './types/validator';
 
 export default function App() {
-  const [selectedIp, setSelectedIp] = useState<string | null>(null);
+  // cluster id is ips joined with '|'
+  const [selectedClusterId, setSelectedClusterId] = useState<string | null>(null);
   const [selectedValidator, setSelectedValidator] = useState<string | null>(null);
 
-  const filteredData = selectedIp 
-    ? data.filter(item => item.ip === selectedIp)
+  // rawData imported from JSON; cast to ValidatorData (clusters)
+  const data = rawData as ValidatorData;
+
+  // filter clusters by the selected cluster id
+  const filteredData = selectedClusterId
+    ? data.filter(item => item.ips.join('|') === selectedClusterId)
     : data;
 
-  // Reset validator selection when IP changes
+  // Reset validator selection when cluster changes
   useEffect(() => {
     setSelectedValidator(null);
-  }, [selectedIp]);
+  }, [selectedClusterId]);
+
+  // human-friendly label for header
+  const headerLabel = selectedClusterId
+    ? `Validator Details for ${selectedClusterId.split('|').join(', ')}`
+    : 'Validator Details';
 
   return (
     <Container maxWidth="xl">
@@ -24,29 +35,29 @@ export default function App() {
         <Typography variant="h4" component="h1" gutterBottom>
           Validator Analysis Dashboard
         </Typography>
-        
+
         <Box mb={4}>
-          <StakeDistribution 
-            data={data} 
-            selectedIp={selectedIp}
-            onIpSelect={setSelectedIp}
+          <StakeDistribution
+            data={data}
+            selectedClusterId={selectedClusterId}
+            onClusterSelect={setSelectedClusterId}
           />
         </Box>
 
         <Box>
           <Typography variant="h5" gutterBottom>
-            {selectedIp ? `Validator Details for ${selectedIp}` : 'Validator Details'}
+            {headerLabel}
           </Typography>
           <Box display="flex" flexDirection="column" gap={4}>
-            <ValidatorTable 
+            <ValidatorTable
               data={filteredData.map(d => ({
                 ...d,
-                validators_info: d.validators_info.filter(v => 
-                  !selectedValidator || v.identityPubkey === selectedValidator
+                validators_info: d.validators_info.filter(v =>
+                  !selectedValidator || v.identity_pubkey === selectedValidator
                 )
-              }))} 
+              }))}
             />
-            <ValidatorPieChart 
+            <ValidatorPieChart
               data={filteredData}
               selectedValidator={selectedValidator}
               onValidatorSelect={setSelectedValidator}

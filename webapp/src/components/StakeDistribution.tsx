@@ -1,11 +1,11 @@
 import { useMemo, useState } from 'react';
-import { 
-  Paper, 
-  Typography, 
-  Box, 
-  List, 
-  ListItem, 
-  ListItemButton, 
+import {
+  Paper,
+  Typography,
+  Box,
+  List,
+  ListItem,
+  ListItemButton,
   ListItemText,
   Chip,
   Stack,
@@ -16,45 +16,46 @@ import { ValidatorData } from '@/types/validator';
 
 interface StakeDistributionProps {
   data: ValidatorData;
-  onIpSelect: (ip: string | null) => void;
-  selectedIp: string | null;
+  onClusterSelect: (clusterId: string | null) => void;
+  selectedClusterId: string | null;
 }
 
 type SortOption =
   | 'stake'
   | 'validators'
-  | 'identities'
   | 'ip'
   | 'jito stakepool validators'
   | 'jito stake'
   | 'sfdp participants';
 
-export function StakeDistribution({ data, onIpSelect, selectedIp }: StakeDistributionProps) {
+export function StakeDistribution({ data, onClusterSelect, selectedClusterId }: StakeDistributionProps) {
   const [sortBy, setSortBy] = useState<SortOption>('stake');
 
   const listData = useMemo(() => {
-    const total = data.reduce((sum, item) => sum + item.total_stakeUI, 0);
+    const total = data.reduce((sum, item) => sum + item.total_stake_ui, 0);
     const items = data.map(item => {
       const jitoValidators = item.validators_info.filter(v => v.jito_stakepool);
-      const sfdpValidators = item.validators_info.filter(v => v.sfdp_status === 'Approved');
+      const sfdpValidators = item.validators_info.filter(v => v.sfdp_participant);
 
-      // Sum Jito stake across validators for this IP (handles both camel/snake just in case)
-      const jitoStake =
-        item.validators_info.reduce((sum, v) => {
-          const val = (v as any).jito_stake_ui ?? (v as any).jito_stakeUI ?? 0;
-          return sum + (typeof val === 'number' ? val : 0);
-        }, 0);
+      // cluster id: unique, stable string for selection
+      const id = item.ips.join('|');
+
+      // sum Jito stake; accept jito_stake_ui or jito_stake_ui numeric
+      const jitoStake = item.validators_info.reduce((sum, v) => {
+        const val = v.jito_stake_ui;
+        return sum + (typeof val === 'number' ? val : 0);
+      }, 0);
 
       return {
-        ip: item.ip,
-        stake: item.total_stakeUI,
-        percentage: (item.total_stakeUI / total) * 100,
+        id,
+        ips: item.ips,
+        stake: item.total_stake_ui,
+        percentage: total > 0 ? (item.total_stake_ui / total) * 100 : 0,
         validatorCount: item.validators_info.length,
         stakedIdentities: item.staked_identities.length,
         jitoValidatorCount: jitoValidators.length,
         jitoStake,
         sfdpValidatorCount: sfdpValidators.length,
-        originalData: item
       };
     });
 
@@ -64,8 +65,6 @@ export function StakeDistribution({ data, onIpSelect, selectedIp }: StakeDistrib
           return b.stake - a.stake;
         case 'validators':
           return b.validatorCount - a.validatorCount;
-        case 'identities':
-          return b.stakedIdentities - a.stakedIdentities;
         case 'jito stakepool validators':
           return b.jitoValidatorCount - a.jitoValidatorCount;
         case 'jito stake':
@@ -73,23 +72,21 @@ export function StakeDistribution({ data, onIpSelect, selectedIp }: StakeDistrib
         case 'sfdp participants':
           return b.sfdpValidatorCount - a.sfdpValidatorCount;
         case 'ip':
-          return a.ip.localeCompare(b.ip);
+          // compare first ip lexicographically
+          return a.ips[0].localeCompare(b.ips[0]);
         default:
           return 0;
       }
     });
   }, [data, sortBy]);
 
-  const totalStake = useMemo(
-    () => data.reduce((sum, item) => sum + item.total_stakeUI, 0),
-    [data]
-  );
+  const totalStake = useMemo(() => data.reduce((sum, item) => sum + item.total_stake_ui, 0), [data]);
 
   return (
     <Paper elevation={2}>
       <Box p={3}>
         <Typography variant="h6" gutterBottom>
-          Stake Distribution by IP
+          Stake Distribution by Cluster (IPs)
         </Typography>
 
         <Stack direction="row" justifyContent="space-between" alignItems="center" mb={2}>
@@ -108,10 +105,9 @@ export function StakeDistribution({ data, onIpSelect, selectedIp }: StakeDistrib
           >
             <ToggleButton value="stake">Stake</ToggleButton>
             <ToggleButton value="validators">Validators</ToggleButton>
-            <ToggleButton value="identities">Identities</ToggleButton>
             <ToggleButton value="jito stakepool validators">Jito stakepool validators</ToggleButton>
             <ToggleButton value="jito stake">Jito stake</ToggleButton>
-            <ToggleButton value="sfdp approved">SFDP</ToggleButton>
+            <ToggleButton value="sfdp participants">SFDP Participants</ToggleButton>
             <ToggleButton value="ip">IP</ToggleButton>
           </ToggleButtonGroup>
         </Stack>
@@ -120,20 +116,20 @@ export function StakeDistribution({ data, onIpSelect, selectedIp }: StakeDistrib
           <List>
             {listData.map((item) => (
               <ListItem
-                key={item.ip}
+                key={item.id}
                 disablePadding
                 sx={{
-                  backgroundColor: selectedIp === item.ip ? 'action.selected' : 'transparent',
-                  borderLeft: selectedIp === item.ip ? '4px solid' : '4px solid transparent',
+                  backgroundColor: selectedClusterId === item.id ? 'action.selected' : 'transparent',
+                  borderLeft: selectedClusterId === item.id ? '4px solid' : '4px solid transparent',
                   borderColor: 'primary.main',
                 }}
               >
-                <ListItemButton onClick={() => onIpSelect(item.ip === selectedIp ? null : item.ip)}>
+                <ListItemButton onClick={() => onClusterSelect(item.id === selectedClusterId ? null : item.id)}>
                   <ListItemText
                     primary={
                       <Stack direction="row" spacing={2} alignItems="center">
                         <Typography variant="body1" fontWeight="bold">
-                          {item.ip}
+                          {item.ips.length === 1 ? item.ips[0] : `${item.ips[0]} (+${item.ips.length - 1})`}
                         </Typography>
                         <Chip
                           label={`${item.percentage.toFixed(1)}%`}
@@ -167,7 +163,7 @@ export function StakeDistribution({ data, onIpSelect, selectedIp }: StakeDistrib
                           })} SOL</strong>
                         </Typography>
                         <Typography variant="body2" component="span">
-                          SFDP: <strong>{item.sfdpValidatorCount}</strong> approved
+                          SFDP: <strong>{item.sfdpValidatorCount}</strong> participants
                         </Typography>
                       </Stack>
                     }

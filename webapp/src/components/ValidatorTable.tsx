@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { Box, Paper } from '@mui/material';
-import { ValidatorData, ValidatorInfo } from '@/types/validator';
+import { ValidatorData } from '@/types/validator';
 
 interface ValidatorTableProps {
   data: ValidatorData;
@@ -9,68 +9,77 @@ interface ValidatorTableProps {
 
 export function ValidatorTable({ data }: ValidatorTableProps) {
   const rows = useMemo(() => {
-    return data.flatMap(ipData => 
-      ipData.validators_info.map(validator => ({
-        ...validator,
-        id: `${ipData.ip}-${validator.identityPubkey}`,
-        ip: ipData.ip
-      }))
+    return data.flatMap(cluster =>
+      cluster.validators_info.map(validator => {
+        // normalize fields (prefer camelCase, fall back to snake_case)
+        const identityPubkey = validator.identity_pubkey;
+        const voteAccountPubkey = validator.vote_account_pubkey;
+        const activatedStakeUI = validator.activated_stake_ui;
+        const jito_stake_ui = validator.jito_stake_ui;
+        const jito_stakepool = validator.jito_stakepool;
+        const sfdp_participant = validator.sfdp_participant;
+        const sfdp_status = validator.sfdp_status;
+
+        return {
+          // ensure unique id per cluster + validator
+          id: `${cluster.ips.join('|')}-${identityPubkey}`,
+          clusterId: cluster.ips.join('|'),
+          ips: cluster.ips.join(', '),
+          identityPubkey,
+          voteAccountPubkey,
+          activatedStakeUI,
+          jito_stakepool,
+          jito_stake_ui,
+          sfdp_participant,
+          sfdp_status,
+        };
+      })
     );
   }, [data]);
 
   const columns: GridColDef[] = [
-    { field: 'ip', headerName: 'IP Address', width: 150 },
+    { field: 'ips', headerName: 'IPs', width: 200, sortable: false },
     { field: 'identityPubkey', headerName: 'Identity', width: 320 },
     { field: 'voteAccountPubkey', headerName: 'Vote Account', width: 320 },
-    { field: 'commission', headerName: 'Commission %', width: 130, type: 'number' },
-    { 
-      field: 'activatedStakeUI', 
-      headerName: 'Stake (SOL)', 
-      width: 150, 
-      type: 'number',
-      valueFormatter: (params) => params.value.toLocaleString(undefined, {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-      })
-    },
-    { 
-      field: 'jito_stakepool', 
-      headerName: 'Jito Pool', 
-      width: 100, 
-      type: 'boolean' 
-    },
-    { 
-      field: 'jito_stakeUI', 
-      headerName: 'Jito Stake (SOL)', 
-      width: 150, 
+    {
+      field: 'activatedStakeUI',
+      headerName: 'Stake (SOL)',
+      width: 150,
       type: 'number',
       valueFormatter: (params) => {
-        if (!params.value) return 'N/A';
-        return params.value.toLocaleString(undefined, {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2
-        });
+        const v = params.value as number | null | undefined;
+        if (v === null || v === undefined) return 'N/A';
+        return v.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       }
     },
-    { 
-      field: 'sfdp_participant', 
-      headerName: 'SFDP', 
-      width: 100, 
-      type: 'boolean' 
+    {
+      field: 'jito_stakepool',
+      headerName: 'Jito Pool',
+      width: 110,
+      type: 'boolean'
     },
-    { 
-      field: 'sfdp_status', 
-      headerName: 'SFDP Status', 
-      width: 120 
-    },
-    { field: 'version', headerName: 'Version', width: 120 },
-    { field: 'skipRate', headerName: 'Skip Rate', width: 120, type: 'number',
+    {
+      field: 'jito_stake_ui',
+      headerName: 'Jito Stake (SOL)',
+      width: 150,
+      type: 'number',
       valueFormatter: (params) => {
-        if (params.value === null) return 'N/A';
-        return `${(params.value * 100).toFixed(2)}%`;
+        const v = params.value as number | null | undefined;
+        if (v === null || v === undefined || v === 0) return 'N/A';
+        return (v as number).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       }
     },
-    { field: 'delinquent', headerName: 'Delinquent', width: 100, type: 'boolean' },
+    {
+      field: 'sfdp_participant',
+      headerName: 'SFDP',
+      width: 100,
+      type: 'boolean'
+    },
+    {
+      field: 'sfdp_status',
+      headerName: 'SFDP Status',
+      width: 120
+    },
   ];
 
   return (

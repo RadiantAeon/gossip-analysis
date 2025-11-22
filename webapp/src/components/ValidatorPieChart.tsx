@@ -20,8 +20,8 @@ const renderActiveShape = (props: any) => {
     fill, payload
   } = props;
 
-  const value = payload.activatedStakeUI;
-  const formattedStake = value.toLocaleString(undefined, {
+  const value = (payload.activatedStakeUI ?? payload.value ?? 0);
+  const formattedStake = Number(value).toLocaleString(undefined, {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
   });
@@ -35,10 +35,10 @@ const renderActiveShape = (props: any) => {
         {`${formattedStake} SOL`}
       </text>
       <text x={cx} y={cy + 20} dy={8} textAnchor="middle" fill="#999" fontSize={12}>
-        {`Commission: ${payload.commission}%`}
+        {`Commission: ${payload.commission ?? 'N/A'}%`}
       </text>
       <text x={cx} y={cy + 40} dy={8} textAnchor="middle" fill="#999" fontSize={12}>
-        {`Version: ${payload.version}`}
+        {`Version: ${payload.version ?? 'N/A'}`}
       </text>
       <Sector
         cx={cx}
@@ -64,15 +64,15 @@ const renderActiveShape = (props: any) => {
 
 export function ValidatorPieChart({ data, onValidatorSelect, selectedValidator }: ValidatorPieChartProps) {
   const chartData = useMemo(() => {
-    const validators = data.flatMap(ipData => 
-      ipData.validators_info.map(validator => ({
+    const validators = data.flatMap(cluster =>
+      cluster.validators_info.map(validator => ({
         ...validator,
-        name: validator.identityPubkey.slice(0, 8) + '...',
-        value: validator.activatedStakeUI,
-        fullName: validator.identityPubkey,
-        ip: ipData.ip
+        name: (validator.identity_pubkey ?? '').slice(0, 8) + '...',
+        value: validator.activated_stake_ui ?? 0,
+        fullName: validator.identity_pubkey,
+        ip: (cluster.ips && cluster.ips.length > 0) ? cluster.ips[0] : 'unknown'
       }))
-    ).sort((a, b) => b.value - a.value);
+    ).sort((a, b) => (b.value ?? 0) - (a.value ?? 0));
 
     return validators;
   }, [data]);
@@ -95,13 +95,13 @@ export function ValidatorPieChart({ data, onValidatorSelect, selectedValidator }
                 innerRadius={60}
                 outerRadius={140}
                 label={({ name, value }) => 
-                  `${name} (${value.toLocaleString(undefined, {
+                  `${name} (${Number(value ?? 0).toLocaleString(undefined, {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                   })} SOL)`
                 }
-                onClick={(data) => 
-                  onValidatorSelect(data.fullName === selectedValidator ? null : data.fullName)
+                onClick={(d: any) => 
+                  onValidatorSelect(d.fullName === selectedValidator ? null : d.fullName)
                 }
                 activeIndex={chartData.findIndex(item => item.fullName === selectedValidator)}
                 activeShape={renderActiveShape}
@@ -115,7 +115,7 @@ export function ValidatorPieChart({ data, onValidatorSelect, selectedValidator }
                 ))}
               </Pie>
               <Tooltip
-                formatter={(value: number) => value.toLocaleString(undefined, {
+                formatter={(value: number) => (Number(value ?? 0)).toLocaleString(undefined, {
                   minimumFractionDigits: 2,
                   maximumFractionDigits: 2
                 }) + ' SOL'}

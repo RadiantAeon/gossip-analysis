@@ -24,7 +24,7 @@ export function ValidatorTable({ data }: ValidatorTableProps) {
           // ensure unique id per cluster + validator
           id: `${cluster.ips.join('|')}-${identityPubkey}`,
           clusterId: cluster.ips.join('|'),
-          ips: cluster.ips.join(', '),
+          ips: validator.ips.join(','),
           identityPubkey,
           voteAccountPubkey,
           activatedStakeUI,

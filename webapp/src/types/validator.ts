@@ -18,6 +18,8 @@ export interface ValidatorInfo {
   // sfdp fields injected
   sfdp_participant: boolean,
   sfdp_status?: string,
+
+  ips: string[],
 }
 
 export interface ClusterData {

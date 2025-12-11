@@ -105,6 +105,8 @@ struct ValidatorInfoOut {
     // sfdp fields injected
     sfdp_participant: bool,
     sfdp_status: Option<String>,
+
+    ips: Vec<String>
 }
 
 #[derive(Debug, Serialize)]
@@ -162,8 +164,7 @@ fn main() -> Result<()> {
         .map(|s| (s.mainnet_beta_pubkey.clone(), s))
         .collect();
 
-    // Build staked_validators and a map by identity pubkey
-    let mut staked_validators: Vec<ValidatorInfoOut> = Vec::new();
+    // Build staked_validators map by identity pubkey
     let mut staked_validators_map: HashMap<String, ValidatorInfoOut> = HashMap::new();
 
     for v in active_validators.validators.into_iter() {
@@ -201,17 +202,17 @@ fn main() -> Result<()> {
                     jito_stake_ui: jito_stake_ui,
                     sfdp_participant,
                     sfdp_status,
+                    ips: vec![]
                 };
 
-                staked_validators_map.insert(v.identity_pubkey.clone(), info.clone());
-                staked_validators.push(info);
+                staked_validators_map.insert(v.identity_pubkey.clone(), info);
             }
         }
     }
 
     // Prepare maps used while scanning gossip outputs
     let mut ips_map: HashMap<String, Vec<IdentityRecord>> = HashMap::new();
-    let mut pubkeys_map: HashMap<String, String> = HashMap::new();
+    let mut pubkeys_map: HashMap<String, Vec<String>> = HashMap::new();
     let mut potential_sybil_ips: HashSet<String> = HashSet::new();
 
     // Read gossip records directory, iterate sorted file names
@@ -268,19 +269,21 @@ fn main() -> Result<()> {
 
             // track staked pubkeys seen at ip; also warn if staked validator found on new ip
             if is_staked {
-                if let Some(prev_ip) = pubkeys_map.get(&pubkey) {
-                    if prev_ip != &ip {
-                        println!(
-                            "staked validator {} found at new ip {} with previous ip {}",
-                            pubkey, ip, prev_ip
-                        );
+                if let Some(prev_ips) = pubkeys_map.get_mut(&pubkey) {
+                    if !prev_ips.contains(&ip) {
+                        prev_ips.push(ip);
                     }
+                } else {
+                    pubkeys_map.insert(pubkey.clone(), vec![ip.clone()]);
                 }
-                pubkeys_map.insert(pubkey.clone(), ip.clone());
             }
         }
 
         record_index += 1;
+    }
+
+    for (pubkey, ips) in pubkeys_map {
+        staked_validators_map.get_mut(&pubkey).unwrap().ips = ips;
     }
 
     // Build per-IP output for potential sybil ips that actually host multiple staked validators

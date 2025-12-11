@@ -72,10 +72,10 @@
     <div id="root"></div>
     <script>
       const groupStyles = {
-        JITO: { label: 'Jito pool', color: '#9945FF' },
-        SFDP: { label: 'SFDP only', color: '#8752F3' },
-        SFDPandJito: { label: 'Jito + SFDP', color: '#43B4CA' },
-        Regular: { label: 'No program', color: '#19FB9B' },
+        JITO: { label: 'Jito pool', color: 'blue' },
+        SFDP: { label: 'SFDP only', color: 'plum' },
+        SFDPandJito: { label: 'Jito + SFDP', color: 'coral' },
+        Regular: { label: 'No program', color: 'green' },
       };
 
       const legend = document.getElementById('legend');
@@ -99,41 +99,45 @@
         },
       };
 
-      const legendTitle = document.createElement('div');
-      legendTitle.className = 'legend-title';
-      legendTitle.textContent = 'Legend';
-      legend.appendChild(legendTitle);
+      function populateLegend(target, styles, visOptions) {
+        const legendTitle = document.createElement('div');
+        legendTitle.className = 'legend-title';
+        legendTitle.textContent = 'Legend';
+        target.appendChild(legendTitle);
 
-      Object.entries(groupStyles).forEach(([groupName, config]) => {
-        options.groups[groupName] = {
-          color: {
-            background: config.color,
-            border: '#1f2933',
-            highlight: {
+        Object.entries(styles).forEach(([groupName, config]) => {
+          visOptions.groups[groupName] = {
+            color: {
               background: config.color,
-              border: '#111827',
+              border: '#1f2933',
+              highlight: {
+                background: config.color,
+                border: '#111827',
+              },
+              hover: {
+                background: config.color,
+                border: '#111827',
+              },
             },
-            hover: {
-              background: config.color,
-              border: '#111827',
-            },
-          },
-        };
+          };
 
-        const item = document.createElement('div');
-        item.className = 'legend-item';
+          const item = document.createElement('div');
+          item.className = 'legend-item';
 
-        const swatch = document.createElement('span');
-        swatch.className = 'legend-swatch';
-        swatch.style.backgroundColor = config.color;
+          const swatch = document.createElement('span');
+          swatch.className = 'legend-swatch';
+          swatch.style.backgroundColor = config.color;
 
-        const label = document.createElement('span');
-        label.textContent = config.label;
+          const label = document.createElement('span');
+          label.textContent = config.label;
 
-        item.appendChild(swatch);
-        item.appendChild(label);
-        legend.appendChild(item);
-      });
+          item.appendChild(swatch);
+          item.appendChild(label);
+          target.appendChild(item);
+        });
+      }
+
+      populateLegend(legend, groupStyles, options);
 
       fetch('sybil_analysis_output.json')
         .then((response) => response.json())

@@ -241,6 +241,11 @@
           const edges = data.edges;
           let network = new vis.Network(container, { nodes, edges }, options);
 
+          network.on('stabilized', function () {
+            options.physics.barnesHut.avoidOverlap = 0.2;
+            network.setOptions(options);
+          });
+
           // grab metadata
           populateMetadata(network);
         });

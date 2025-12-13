@@ -35,6 +35,43 @@
         min-width: 180px;
       }
 
+      #metadata {
+        position: absolute;
+        bottom: 16px;
+        right: 16px;
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid #d2d6dc;
+        border-radius: 8px;
+        padding: 12px 16px;
+        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+        z-index: 10;
+        min-width: 260px;
+        max-width: 40%;
+      }
+
+      #metadata .meta-title {
+        font-weight: 600;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+
+      #metadata .meta-row {
+        display: flex;
+        gap: 8px;
+        margin: 4px 0;
+        font-size: 13px;
+      }
+
+      #metadata .meta-key {
+        color: #6b7280;
+        min-width: 100px;
+      }
+
+      #metadata .meta-value {
+        color: #1f2937;
+        word-break: break-word;
+      }
+
       #legend .legend-title {
         font-weight: 600;
         margin-bottom: 8px;
@@ -68,8 +105,10 @@
   ></script>
   
   <body>
-    <div id="legend"></div>
+    <div id="legend">
+    </div>
     <div id="root"></div>
+    <div id="metadata"></div>
     <script>
       const groupStyles = {
         JITO: { label: 'Jito pool', color: '#008000', border: 'darkgreen' },
@@ -99,6 +138,9 @@
           barnesHut: {
             springLength: 350,
           },
+        },
+        layout: {
+          improvedLayout: false,
         },
       };
 
@@ -142,12 +184,65 @@
 
       populateLegend(legend, groupStyles, options);
 
+      function populateMetadata(network) {
+        const panel = document.getElementById('metadata');
+
+        function render(titleText, rows) {
+          panel.innerHTML = '';
+          const title = document.createElement('div');
+          title.className = 'meta-title';
+          title.textContent = titleText;
+          panel.appendChild(title);
+
+          rows.forEach(([key, value]) => {
+            const row = document.createElement('div');
+            row.className = 'meta-row';
+            const k = document.createElement('div');
+            k.className = 'meta-key';
+            k.textContent = key;
+            const v = document.createElement('div');
+            v.className = 'meta-value';
+            v.textContent = value;
+            row.appendChild(k);
+            row.appendChild(v);
+            panel.appendChild(row);
+          });
+        }
+
+        network.on('select', function (params) {
+          const counts = { JITO: 0, SFDP: 0, SFDPandJito: 0, Regular: 0 };
+          const stake = params.nodes.reduce((acc, nodeId) => {
+            const node = network.body.nodes[nodeId];
+            const value = node?.options?.value ?? 0;
+            const group = node?.options?.group ?? 'Regular';
+            if (group in counts) counts[group] += 1; else counts.Regular += 1;
+            return acc + value;
+          }, 0);
+
+          const rows = [
+            ['Total Stake (SOL)', stake.toLocaleString('en-US')],
+            ['Number of Validators', String(params.nodes.length)],
+            ['Jito pool', String(counts.JITO)],
+            ['SFDP only', String(counts.SFDP)],
+            ['Jito + SFDP', String(counts.SFDPandJito)],
+            ['No program', String(counts.Regular)],
+          ];
+          render('Selected Validators', rows);
+        });
+
+        // initial state
+        render('No Selection', [['Hint', 'Click or drag select nodes to see details']]);
+      }
+
       fetch('sybil_analysis_output.json')
         .then((response) => response.json())
         .then((data) => {
           const nodes = data.nodes;
           const edges = data.edges;
-          new vis.Network(container, { nodes, edges }, options);
+          let network = new vis.Network(container, { nodes, edges }, options);
+
+          // grab metadata
+          populateMetadata(network);
         });
     </script>
   </body>

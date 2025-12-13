@@ -107,7 +107,10 @@
   <body>
     <div id="selected-nodes" style="position:absolute;top:16px;left:16px;bottom:16px;z-index:10;background:rgba(255,255,255,0.95);border:1px solid #d2d6dc;border-radius:8px;padding:12px 16px;box-shadow:0 4px 12px rgba(15, 23, 42, 0.15);min-width:320px;max-width:32%;display:flex;flex-direction:column;gap:10px;overflow-x:hidden;">
       <div style="font-weight:600;font-size:14px;">Selected Nodes</div>
-      <input id="search-input" type="text" placeholder="Search by node title…" style="width:100%;padding:8px;border:1px solid #d2d6dc;border-radius:6px;font-size:13px;box-sizing:border-box;display:block;" />
+      <div style="display:flex;align-items:center;gap:8px;">
+        <input id="search-input" type="text" placeholder="Search by node title…" style="flex:1;padding:8px;border:1px solid #d2d6dc;border-radius:6px;font-size:13px;box-sizing:border-box;display:block;" />
+        <button id="export-csv" style="padding:8px 12px;font-size:12px;border:1px solid #d2d6dc;border-radius:6px;background:#f9fafb;color:#111827;cursor:pointer;white-space:nowrap;">Export CSV</button>
+      </div>
       <div id="selected-nodes-list" style="display:flex;flex-direction:column;gap:8px;font-size:12px;color:#1f2937;overflow:auto;flex:1;min-height:0;"></div>
     </div>
     <div id="legend">
@@ -191,6 +194,8 @@
 
       function populateMetadata(network) {
         const panel = document.getElementById('metadata');
+        // Track latest selected node titles for CSV export
+        let latestSelectedTitles = [];
 
         function render(titleText, rows) {
           panel.innerHTML = '';
@@ -226,6 +231,8 @@
             return acc + value;
           }
           , 0);
+          // keep titles for CSV export
+          latestSelectedTitles = titles;
           // Render selected titles in the left sidebar
           const listEl = document.getElementById('selected-nodes-list');
           if (listEl) {
@@ -248,6 +255,9 @@
               });
             }
           }
+
+          // (export handler is registered once outside this select callback)
+
           const rows = [
             ['Total Stake (SOL)', stake.toLocaleString('en-US')],
             ['Number of Validators', String(params.nodes.length)],
@@ -259,8 +269,68 @@
           render('Selected Validators', rows);
         };
 
-        network.on('select', onSelectHandler);
+        // Helper: parse a node title string into columns
+        function parseTitleToColumns(title) {
+          const result = {
+            Identity: '',
+            Vote: '',
+            Stake: '',
+            'Jito pool': '',
+            'Jito stake': '',
+            SFDP: '',
+          };
+          if (typeof title !== 'string') return result;
+          const lines = title.split(/\r?\n/);
+          for (const line of lines) {
+            const idx = line.indexOf(':');
+            if (idx === -1) continue;
+            const key = line.slice(0, idx).trim();
+            let val = line.slice(idx + 1).trim();
+            if (key === 'Stake' || key === 'Jito stake') {
+              // Keep numeric SOL value without unit
+              const match = val.match(/^[0-9]+(?:\.[0-9]+)?/);
+              if (match) val = match[0];
+            }
+            if (key in result) {
+              result[key] = val;
+            }
+          }
+          return result;
+        }
 
+        // Register export handler once; uses latestSelectedTitles
+        const exportBtn = document.getElementById('export-csv');
+        if (exportBtn) {
+          exportBtn.addEventListener('click', () => {
+            const titles = latestSelectedTitles || [];
+            // Build CSV header and rows from parsed titles
+            const headers = ['Identity','Vote','Stake (SOL)','Jito Pool','Jito Stake (SOL)','SFDP Status'];
+            const rows = titles.map(t => {
+              const cols = parseTitleToColumns(t);
+              const fields = [
+                cols.Identity,
+                cols.Vote,
+                cols.Stake,
+                cols['Jito pool'],
+                cols['Jito stake'],
+                cols.SFDP,
+              ];
+              // CSV-quote fields
+              return fields.map(f => '"' + String(f).replace(/"/g, '""') + '"').join(',');
+            });
+            const csv = [headers.join(',')].concat(rows).join('\n');
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'selected_nodes.csv';
+            a.click();
+            URL.revokeObjectURL(url);
+          });
+        }
+
+        network.on('select', onSelectHandler);
+        
         // initial state
         render('No Selection', [['Hint', 'Click or drag select nodes to see details']]);
       

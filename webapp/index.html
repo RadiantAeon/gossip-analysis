@@ -263,6 +263,8 @@
 
         // initial state
         render('No Selection', [['Hint', 'Click or drag select nodes to see details']]);
+      
+        return onSelectHandler;
       }
 
       fetch('sybil_analysis_output.json')
@@ -273,7 +275,7 @@
           let network = new vis.Network(container, { nodes, edges }, options);
 
           // grab metadata
-          populateMetadata(network);
+          const onSelectHandler = populateMetadata(network);
 
           // Build a map from node id to title for faster search
           const idToTitle = new Map();

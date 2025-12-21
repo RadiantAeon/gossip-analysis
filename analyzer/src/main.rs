@@ -308,9 +308,12 @@ fn analyze_gossip_files(
     }
 
     // sort and dedup IPs so we can easily search in the next step
-    ips_map.iter_mut().for_each(|(_, ips)| {
+    ips_map.iter_mut().for_each(|(identity_pubkey, ips)| {
         ips.dedup();
         ips.sort();
+        if let Some(staked_node) = staked_validators_map.get_mut(identity_pubkey) {
+            staked_node.ips = ips.clone();
+        }
     });
 
     // generate edges between nodes that share IPs

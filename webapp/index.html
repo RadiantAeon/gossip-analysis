@@ -243,6 +243,10 @@
           } else {
               lines.push(`SFDP: No`);
           }
+
+          if (info.ips && info.ips.length > 0) {
+              lines.push(`IPs: ${info.ips.join(', ')}`);
+          }
           
           return lines.join('\n');
         }

@@ -10,3 +10,4 @@ anyhow = "1.0"
 walkdir = "2.3.4"
 solana-cli-output = { version = "3.1.2", features = ["agave-unstable-api"] }
 clap = { version = "4.4", features = ["derive"] }
+html-escape = "0.2.13"

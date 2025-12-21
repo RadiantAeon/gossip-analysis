@@ -135,11 +135,12 @@
           color: 'black',
         },
         nodes: {
-          shape: 'dot',
+          shape: 'circularImage',
           scaling: {
             min: 50,
             max: 300,
           },
+          borderWidth: 6,
         },
         groups: {},
         physics: {
@@ -192,10 +193,10 @@
 
       populateLegend(legend, groupStyles, options);
 
-      function populateMetadata(network) {
+      function populateMetadata(network, idToNodeMap) {
         const panel = document.getElementById('metadata');
-        // Track latest selected node titles for CSV export
-        let latestSelectedTitles = [];
+        // Track latest selected nodes for CSV export
+        let latestSelectedNodes = [];
 
         function render(titleText, rows) {
           panel.innerHTML = '';
@@ -219,44 +220,71 @@
           });
         }
 
+        function formatNodeInfo(node) {
+          const info = node.info || {};
+          const meta = info.info || {};
+          const lines = [];
+          if (meta.name) lines.push(`Name: ${meta.name}`);
+          if (meta.description) lines.push(`Description: ${meta.description}`);
+          if (meta.website) lines.push(`Website: ${meta.website}`);
+          if (info.identity_pubkey) lines.push(`Identity: ${info.identity_pubkey}`);
+          if (info.vote_account_pubkey) lines.push(`Vote: ${info.vote_account_pubkey}`);
+          if (info.activated_stake_ui) lines.push(`Stake: ${info.activated_stake_ui}`);
+          
+          if (info.jito_stakepool) {
+              lines.push(`Jito Pool: Yes`);
+              if (info.jito_stake_ui) lines.push(`Jito Stake: ${info.jito_stake_ui}`);
+          } else {
+              lines.push(`Jito Pool: No`);
+          }
+          
+          if (info.sfdp_participant) {
+              lines.push(`SFDP: ${info.sfdp_status || 'Participant'}`);
+          } else {
+              lines.push(`SFDP: No`);
+          }
+          
+          return lines.join('\n');
+        }
+
         function onSelectHandler (params) {
           const counts = { JITO: 0, SFDP: 0, SFDPandJito: 0, Regular: 0 };
-          const titles = [];
+          const selectedNodes = [];
           const stake = params.nodes.reduce((acc, nodeId) => {
             const node = network.body.nodes[nodeId];
+            const dataNode = idToNodeMap.get(nodeId);
             const value = node?.options?.value ?? 0;
             const group = node?.options?.group ?? 'Regular';
             if (group in counts) counts[group] += 1; else counts.Regular += 1;
-            titles.push(node.options.title)
+            if (dataNode) selectedNodes.push(dataNode);
             return acc + value;
           }
           , 0);
-          // keep titles for CSV export
-          latestSelectedTitles = titles;
-          // Render selected titles in the left sidebar
+          
+          latestSelectedNodes = selectedNodes;
+
+          // Render selected nodes in the left sidebar
           const listEl = document.getElementById('selected-nodes-list');
           if (listEl) {
             listEl.innerHTML = '';
-            if (titles.length === 0) {
+            if (selectedNodes.length === 0) {
               const empty = document.createElement('div');
               empty.style.color = '#6b7280';
               empty.textContent = 'No nodes selected.';
               listEl.appendChild(empty);
             } else {
-              titles.forEach((title) => {
+              selectedNodes.forEach((node) => {
                 const item = document.createElement('div');
                 item.style.border = '1px solid #e5e7eb';
                 item.style.borderRadius = '6px';
                 item.style.padding = '8px';
                 item.style.background = '#ffffff';
                 item.style.whiteSpace = 'pre-wrap';
-                item.textContent = title;
+                item.textContent = formatNodeInfo(node);
                 listEl.appendChild(item);
               });
             }
           }
-
-          // (export handler is registered once outside this select callback)
 
           const rows = [
             ['Total Stake (SOL)', stake.toLocaleString('en-US')],
@@ -269,51 +297,21 @@
           render('Selected Validators', rows);
         };
 
-        // Helper: parse a node title string into columns
-        function parseTitleToColumns(title) {
-          const result = {
-            Identity: '',
-            Vote: '',
-            Stake: '',
-            'Jito pool': '',
-            'Jito stake': '',
-            SFDP: '',
-          };
-          if (typeof title !== 'string') return result;
-          const lines = title.split(/\r?\n/);
-          for (const line of lines) {
-            const idx = line.indexOf(':');
-            if (idx === -1) continue;
-            const key = line.slice(0, idx).trim();
-            let val = line.slice(idx + 1).trim();
-            if (key === 'Stake' || key === 'Jito stake') {
-              // Keep numeric SOL value without unit
-              const match = val.match(/^[0-9]+(?:\.[0-9]+)?/);
-              if (match) val = match[0];
-            }
-            if (key in result) {
-              result[key] = val;
-            }
-          }
-          return result;
-        }
-
-        // Register export handler once; uses latestSelectedTitles
+        // Register export handler once; uses latestSelectedNodes
         const exportBtn = document.getElementById('export-csv');
         if (exportBtn) {
-          exportBtn.addEventListener('click', () => {
-            const titles = latestSelectedTitles || [];
-            // Build CSV header and rows from parsed titles
+          exportBtn.onclick = () => {
+            const nodes = latestSelectedNodes || [];
             const headers = ['Identity','Vote','Stake (SOL)','Jito Pool','Jito Stake (SOL)','SFDP Status'];
-            const rows = titles.map(t => {
-              const cols = parseTitleToColumns(t);
+            const rows = nodes.map(node => {
+              const info = node.info || {};
               const fields = [
-                cols.Identity,
-                cols.Vote,
-                cols.Stake,
-                cols['Jito pool'],
-                cols['Jito stake'],
-                cols.SFDP,
+                info.identity_pubkey || '',
+                info.vote_account_pubkey || '',
+                info.activated_stake_ui || 0,
+                info.jito_stakepool ? 'Yes' : 'No',
+                info.jito_stake_ui || 0,
+                info.sfdp_status || (info.sfdp_participant ? 'Participant' : 'No')
               ];
               // CSV-quote fields
               return fields.map(f => '"' + String(f).replace(/"/g, '""') + '"').join(',');
@@ -326,7 +324,7 @@
             a.download = 'selected_nodes.csv';
             a.click();
             URL.revokeObjectURL(url);
-          });
+          };
         }
 
         network.on('select', onSelectHandler);
@@ -344,8 +342,12 @@
           const edges = data.edges;
           let network = new vis.Network(container, { nodes, edges }, options);
 
+          // Build a map from node id to node data for metadata lookup
+          const idToNodeMap = new Map();
+          nodes.forEach(n => idToNodeMap.set(n.id, n));
+
           // grab metadata
-          const onSelectHandler = populateMetadata(network);
+          const onSelectHandler = populateMetadata(network, idToNodeMap);
 
           // Build a map from node id to title for faster search
           const idToTitle = new Map();

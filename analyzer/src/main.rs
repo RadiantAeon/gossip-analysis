@@ -29,6 +29,10 @@ struct Args {
     #[arg(long, default_value = "sfdp_participants.json")]
     sfdp_participants: PathBuf,
 
+    /// Path to `validator_infos.json`
+    #[arg(long, default_value = "validator_infos.json")]
+    validator_infos: PathBuf,
+
     /// Output path (defaults to `sybil_analysis_output.json`)
     #[arg(long, default_value = "sybil_analysis_output.json")]
     output: PathBuf,
@@ -99,17 +103,45 @@ struct ValidatorInfoOut {
     sfdp_participant: bool,
     sfdp_status: Option<String>,
 
+    info: Option<ValidatorInfo>,
+
     ips: Vec<String>,
 }
 
-#[derive(Debug, Serialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Deserialize)]
+struct ValidatorInfoMeta {
+    #[serde(rename = "identityPubkey")]
+    identity_pubkey: String,
+    info: ValidatorInfo,
+}
+
+#[derive(Debug, Deserialize, Serialize, Clone)]
+struct ValidatorInfo {
+    details: Option<String>,
+    #[serde(rename = "iconUrl")]
+    icon_url: Option<String>,
+    name: String,
+    website: Option<String>,
+}
+
+#[derive(Debug, Serialize, Clone)]
 struct VisNode {
     id: String,
     label: String,
     group: String,
     title: String,
     value: u64,
+    image: String,
+    info: ValidatorInfoOut,
 }
+
+impl PartialEq for VisNode {
+    fn eq(&self, other: &Self) -> bool {
+        self.id == other.id
+    }
+}
+
+impl Eq for VisNode {}
 
 #[derive(Debug, Serialize, PartialEq, Eq, Hash)]
 struct VisEdge {
@@ -203,6 +235,7 @@ fn build_staked_validators_map(
     active_validators: Vec<ValidatorRaw>,
     jito_by_vote: &HashMap<String, &JitoValidator>,
     sfdp_by_pubkey: &HashMap<String, &SfdpParticipant>,
+    infos_by_identity: &HashMap<String, ValidatorInfo>,
 ) -> HashMap<String, ValidatorInfoOut> {
     let mut staked_validators = HashMap::new();
 
@@ -230,7 +263,7 @@ fn build_staked_validators_map(
         staked_validators.insert(
             validator.identity_pubkey.clone(),
             ValidatorInfoOut {
-                identity_pubkey: validator.identity_pubkey,
+                identity_pubkey: validator.identity_pubkey.clone(),
                 vote_account_pubkey: validator.vote_account_pubkey,
                 activated_stake: activated_lamports,
                 activated_stake_ui: activated_ui,
@@ -239,6 +272,7 @@ fn build_staked_validators_map(
                 jito_stake_ui,
                 sfdp_participant,
                 sfdp_status,
+                info: infos_by_identity.get(&validator.identity_pubkey).cloned(),
                 ips: Vec::new(),
             },
         );
@@ -311,39 +345,42 @@ fn analyze_gossip_files(
     }
 
     // generate nodes based on unique identities found that have sybils
-    let mut nodes = HashSet::new();
+    let mut nodes = Vec::new();
     for (identity_pubkey, staked_node) in staked_validators_map {
         if unique_identities.contains(identity_pubkey) {
-            nodes.insert(VisNode {
+            nodes.push(VisNode {
                 id: identity_pubkey.clone(),
                 label: identity_pubkey.chars().take(8).collect(),
-                group: format!("{:?}", if staked_node.sfdp_participant && staked_node.sfdp_status.as_ref().unwrap() == "Approved" {
-                    if staked_node.jito_stakepool {
-                        NodeGroup::SFDPandJito
+                group: format!(
+                    "{:?}",
+                    if staked_node.sfdp_participant
+                        && staked_node.sfdp_status.as_ref().unwrap() == "Approved"
+                    {
+                        if staked_node.jito_stakepool {
+                            NodeGroup::SFDPandJito
+                        } else {
+                            NodeGroup::SFDP
+                        }
                     } else {
-                        NodeGroup::SFDP
+                        if staked_node.jito_stakepool {
+                            NodeGroup::JITO
+                        } else {
+                            NodeGroup::Regular
+                        }
                     }
-                } else {
-                    if staked_node.jito_stakepool {
-                        NodeGroup::JITO
-                    } else {
-                        NodeGroup::Regular
-                    }
-                }),
-                title: format!(
-                    "Identity: {}\nVote: {}\nStake: {:.3} SOL\nJito pool: {}\nJito stake: {:.3} SOL\nSFDP: {}",
-                    staked_node.identity_pubkey,
-                    staked_node.vote_account_pubkey,
-                    staked_node.activated_stake_ui,
-                    if staked_node.jito_stakepool { "yes" } else { "no" },
-                    staked_node.jito_stake_ui,
-                    if staked_node.sfdp_participant {
-                        staked_node.sfdp_status.clone().unwrap()
-                    } else {
-                        "Not participant".to_string()
-                    },
                 ),
+                title: if let Some(info) = staked_node.info.clone() {
+                    info.name
+                } else {
+                    "Vote: ".to_string() + &staked_node.vote_account_pubkey.clone()
+                },
+                image: if let Some(info) = staked_node.info.clone() {
+                    info.icon_url.unwrap_or("".to_string())
+                } else {
+                    "".to_string()
+                },
                 value: staked_node.activated_stake_ui.round() as u64,
+                info: staked_node.clone()
             });
         }
     }
@@ -362,6 +399,7 @@ fn main() -> Result<()> {
     }
 
     let active_validators: ActiveValidatorsFile = read_json_file(&args.active_validators)?;
+    let validator_infos: Vec<ValidatorInfoMeta> = read_json_file(&args.validator_infos)?;
     let jito_validators: JitoValidatorsFile = read_json_file(&args.jito_validators)?;
     let sfdp_participants: Vec<SfdpParticipant> = read_json_file(&args.sfdp_participants)?;
 
@@ -376,8 +414,17 @@ fn main() -> Result<()> {
         .map(|participant| (participant.mainnet_beta_pubkey.clone(), participant))
         .collect();
 
-    let mut staked_validators_map =
-        build_staked_validators_map(active_validators.validators, &jito_by_vote, &sfdp_by_pubkey);
+    let infos_by_identity: HashMap<String, ValidatorInfo> = validator_infos
+        .into_iter()
+        .map(|validator_info| (validator_info.identity_pubkey, validator_info.info))
+        .collect();
+
+    let mut staked_validators_map = build_staked_validators_map(
+        active_validators.validators,
+        &jito_by_vote,
+        &sfdp_by_pubkey,
+        &infos_by_identity,
+    );
 
     let gossip_files = collect_gossip_files(&args.gossip_dir)?;
     let vis_output = analyze_gossip_files(&gossip_files, &mut staked_validators_map)?;

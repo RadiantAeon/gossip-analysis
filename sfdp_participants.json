@@ -66,12 +66,6 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "3QLDc47RmC4GZfFSaZLfuLdoEfDvQSUGe1Ykf3eqP85w",
-    "testnetPubkey": "CkvHbjJT2ao4yxJxXWhEafsvoWUehLKMUZMvTxYq1pPq",
-    "state": "Pending",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "7JbE3o2dCUPBJE6pK5pMGkckHreXVECU4f2esmnuMCaJ",
     "testnetPubkey": "8z2aY921g45L834eLNH9Fcj69hoyX1Sf1sZoXUZJxcKg",
     "state": "TestnetOnboarded",
@@ -114,16 +108,10 @@
     "sfdp2OnboardingEpoch": 844
   },
   {
-    "mainnetBetaPubkey": "Es6WpDZF4v7Cu6nfC13gNsCovzuVry8jRy1CwuUuogGj",
-    "testnetPubkey": "4SYQARi6T3fh9fPcYmdWw1Nyt4NYesRkpsXfi8pUc3FY",
-    "state": "Pending",
+    "mainnetBetaPubkey": "3QLDc47RmC4GZfFSaZLfuLdoEfDvQSUGe1Ykf3eqP85w",
+    "testnetPubkey": "CkvHbjJT2ao4yxJxXWhEafsvoWUehLKMUZMvTxYq1pPq",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "3tyZxRuUyh4itbPKWFHzciHemRKq2rq6QQbjo5VBiPD5",
-    "testnetPubkey": "CiSXnedCAKfMHbcRAQeoHubHBkjDhvd7vUBfC2PK4wQV",
-    "state": "Approved",
-    "sfdp2OnboardingEpoch": 850
   },
   {
     "mainnetBetaPubkey": "4dbthXNuFqwaCefHiBgrcNRk5t8WZ3ttZFX4F5rym49J",
@@ -138,21 +126,21 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "EjLzhr8fCAJYkmysg2d2PZLT1smuXww9Ks8ihga915w4",
-    "testnetPubkey": "dD2iN1P9ssw1pqkBFN4iSKrBE4JPUxxDdJF5MHn7Zos",
-    "state": "Pending",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "8A29GxBhZZKGe752Q6HbYHxxonaK4Q2kD8tzkHhBcPQG",
     "testnetPubkey": "GwAQ33PbytKignFmKvyVSLp7pD8tKMaBXXNwFTTkGsME",
     "state": "TestnetOnboarded",
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "HhcCFjfu41bbx9cy3aGgpvBwSQWfKJbdgz8w8MrEDAGy",
-    "testnetPubkey": "5JAvNfKWHWM8Th9sYkAjEXx2wazJe9uJnwXhNfs2wKQQ",
-    "state": "Pending",
+    "mainnetBetaPubkey": "3tyZxRuUyh4itbPKWFHzciHemRKq2rq6QQbjo5VBiPD5",
+    "testnetPubkey": "CiSXnedCAKfMHbcRAQeoHubHBkjDhvd7vUBfC2PK4wQV",
+    "state": "Approved",
+    "sfdp2OnboardingEpoch": 907
+  },
+  {
+    "mainnetBetaPubkey": "EjLzhr8fCAJYkmysg2d2PZLT1smuXww9Ks8ihga915w4",
+    "testnetPubkey": "dD2iN1P9ssw1pqkBFN4iSKrBE4JPUxxDdJF5MHn7Zos",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -180,18 +168,6 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "DzM9b8J9a6bNFg9YeXH3Yy7agvRygWP7HpNJ2WenbTRc",
-    "testnetPubkey": "9hktk2hiFbgSg88K5W9jvYKT7RLy8ZQRv8nipPRHHru4",
-    "state": "Pending",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "9FZUwx5i5A4TEXLMkr9QXPstd6rz8cd6Z4N9EGCvCMno",
-    "testnetPubkey": "62h4YxyKauEW7QJRcshjC91NNBrdPxyUqN4CUAU9tXjB",
-    "state": "Pending",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "8j8VLucdhGatNnhF6C41iSLkKvNFP44C747siMq97mTu",
     "testnetPubkey": "4sdHPmmiNdRPXtV7tJU7dyZkPUC6ugDzQdjXvHfh3gMZ",
     "state": "TestnetOnboarded",
@@ -216,6 +192,18 @@
     "sfdp2OnboardingEpoch": 845
   },
   {
+    "mainnetBetaPubkey": "Cvhq6EuK4iDbSVK2p8zsKiceLcWGhFs3dhnRfvwEwcgf",
+    "testnetPubkey": "AXawju4mrvczo2KX6W6SwAiwypTkitJ2hFkobL4g2Juh",
+    "state": "Retired",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "9FZUwx5i5A4TEXLMkr9QXPstd6rz8cd6Z4N9EGCvCMno",
+    "testnetPubkey": "62h4YxyKauEW7QJRcshjC91NNBrdPxyUqN4CUAU9tXjB",
+    "state": "Retired",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
     "mainnetBetaPubkey": "3YX7PQuESmR2h95FDgjahEQjyCBhmY1Ts2MsrM1Kg9DS",
     "testnetPubkey": "HkR63m7p3GMmGQ4hMcW6LqGAX6DP1cYHHrKs3H7Hhji6",
     "state": "Approved",
@@ -226,12 +214,6 @@
     "testnetPubkey": "qjdyESULtaC3arAwruF5STGRpLW9j38MtStHPfhUzv2",
     "state": "Approved",
     "sfdp2OnboardingEpoch": 825
-  },
-  {
-    "mainnetBetaPubkey": "Cvhq6EuK4iDbSVK2p8zsKiceLcWGhFs3dhnRfvwEwcgf",
-    "testnetPubkey": "AXawju4mrvczo2KX6W6SwAiwypTkitJ2hFkobL4g2Juh",
-    "state": "Pending",
-    "sfdp2OnboardingEpoch": null
   },
   {
     "mainnetBetaPubkey": "HnXtDkGanRM7EEDqnV1dTrgR6LhnnWaKm6MAXeHaQstM",
@@ -312,21 +294,9 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "chopskqnudaeCTENWzUjfFCBSLcxprqbdMoCAucAwfb",
-    "testnetPubkey": "chopdD4fCw5cjsn9mfavcEY8T6D3m4ML8bzZHhRgF1L",
-    "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "2wdE3T5K2pdQzUZik5PS3wafJJKfY6yiUoCy3AxTEt5i",
     "testnetPubkey": "C6nhtCnmsLaP9BUSbvBT4Lvxu6RcAiFcw3Q98Y4ukLeS",
     "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "HVpTH9m72ZPdzcKkbCkKvrJZRJQHjWeLQVErF56r53n5",
-    "testnetPubkey": "D3QPXn7qcDA2GK7wcButnvAMe8h6btGRN4yMiHhLYVaC",
-    "state": "Pending",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -340,6 +310,12 @@
     "testnetPubkey": "HhSCcE1iQMjrWmv4X7CWbe1Zz2MDe7NmQsTfKrJw16RZ",
     "state": "TestnetOnboarded",
     "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "chopskqnudaeCTENWzUjfFCBSLcxprqbdMoCAucAwfb",
+    "testnetPubkey": "chopdD4fCw5cjsn9mfavcEY8T6D3m4ML8bzZHhRgF1L",
+    "state": "Approved",
+    "sfdp2OnboardingEpoch": 896
   },
   {
     "mainnetBetaPubkey": "AxJ3eD6UPTcskgwcEVt91AjLzFhTJvAUEQFhr2HGTsfV",
@@ -456,57 +432,15 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "9J9DwBdNaK85cRBjRFahHJzgTpcncknXgHQDUL8UxxnY",
-    "testnetPubkey": "6qCFTmec9KY3Nc2dm5QqUjguP4ddasrtXmtbCom9xT7m",
-    "state": "Pending",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "svsD6T44XJnuXQWB15sy1pBxxruzrFy8rR7gXy8Jsj3",
     "testnetPubkey": "testFLBSwLhcJSoPAfcB6KfLPGYb3jacb1wFZhjvJew",
     "state": "Approved",
     "sfdp2OnboardingEpoch": 860
   },
   {
-    "mainnetBetaPubkey": "DtZwuS6LNMY2GfUL98hAD3d7YNRtCmyho8KgKdpmHbcV",
-    "testnetPubkey": "9ZqLYp4DHwRn7sKxe4YANbd6gYHi14CM6YZWPtP14maU",
-    "state": "Pending",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "6syQQcKsevW1aLu8BnzxaF2ckPPf4vuKAieV1jR1JbH1",
     "testnetPubkey": "61Prdafd8MQQWHWETHFH4qRk2bQWsHuqGdJzE99WqdUq",
     "state": "Retired",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "Hm2Dx9YtERJ6uqAR2BNZbbHS6CxLSRzGQa8tXaAeJiCe",
-    "testnetPubkey": "9m6v8citrX6ZreH7vYTLp6o7gy1MNMu4Sc2Pz8TRaWn8",
-    "state": "Pending",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "ATLASnUj1UaihWWVDRBJm9zcD1Wu76Yd3HamUpT5ggdB",
-    "testnetPubkey": "ATLAMw1Nm17dcKt2zoda1W8RTffuFqQkCtNfmLKpeQFD",
-    "state": "Approved",
-    "sfdp2OnboardingEpoch": 845
-  },
-  {
-    "mainnetBetaPubkey": "GNF4nTh2RL2HA1wKw3t7jfqsJizQfmRzp1y4eypCNxfC",
-    "testnetPubkey": "6K2StJn19p9hoYyJJrEasMKnUowaAayhE6kWe7WMuFu5",
-    "state": "Pending",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "ChKPuK1oo5Hj9CdRSNpKx8WBzRrc6M4oc4fpsa6R7koL",
-    "testnetPubkey": "F2cSvBnwgG1JfyixXoY8Srwb42bpVi6XbdtTeKf3piBr",
-    "state": "Pending",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "2cxtexwMy9uQwz9ku3uDXwKxvSL9dr8xV2B2vzWXzFvw",
-    "testnetPubkey": "96F98q3dWPUuW31uUrHgSzN6ZokP4hvW9kY1g8Fjwe1w",
-    "state": "Pending",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -537,12 +471,6 @@
     "mainnetBetaPubkey": "E4xNK4UwGnMtkdiUPyx13i6NkFDdW9Gw9NFGY93wEdGZ",
     "testnetPubkey": "3u5Dn2tDYTCvAisBQe9n1WkrzYgZDewPbXnqBHbcAHK1",
     "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "BUdfU6RBLkSFwjFHxSdHJWAJsHzturRWkfeCxrUTpMfb",
-    "testnetPubkey": "EFJp4xhtTt97PcxPGDCqLj9DRuD5ethTQniY48F7fPgv",
-    "state": "Pending",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -594,9 +522,15 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "J2XQYL23FwNogVYHFr22Dj6STWqfxFTXeu7o4ASxiho",
-    "testnetPubkey": "3k4LhBNdDjFZNmVRCUSEZNZ6yQnqvGYgxwxyP6AFp25U",
-    "state": "Pending",
+    "mainnetBetaPubkey": "DtZwuS6LNMY2GfUL98hAD3d7YNRtCmyho8KgKdpmHbcV",
+    "testnetPubkey": "9ZqLYp4DHwRn7sKxe4YANbd6gYHi14CM6YZWPtP14maU",
+    "state": "Retired",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "BUdfU6RBLkSFwjFHxSdHJWAJsHzturRWkfeCxrUTpMfb",
+    "testnetPubkey": "EFJp4xhtTt97PcxPGDCqLj9DRuD5ethTQniY48F7fPgv",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -639,12 +573,6 @@
     "mainnetBetaPubkey": "FrehxuqEhRnmhau2WcssuxKGKVzPDFEQ3AQq1xz7zZL2",
     "testnetPubkey": "FjNL6tMGjF86ZGbxbrt2DRDDDSbZbZmfsP3wKZoDMbSn",
     "state": "Retired",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "BzbgUWPXE9NcaTJbED52GJEkeMZ6Ud9NazUfi2CDgwLx",
-    "testnetPubkey": "45f8wPRyEViBw52YMRfZa2zDuF7eFTwubiEPMKs1caKM",
-    "state": "Pending",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -696,6 +624,12 @@
     "sfdp2OnboardingEpoch": null
   },
   {
+    "mainnetBetaPubkey": "BzbgUWPXE9NcaTJbED52GJEkeMZ6Ud9NazUfi2CDgwLx",
+    "testnetPubkey": "45f8wPRyEViBw52YMRfZa2zDuF7eFTwubiEPMKs1caKM",
+    "state": "Retired",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
     "mainnetBetaPubkey": "GqC5AnpNQFTQNPWBHXgJWxXQpCKNFGoqbdHYWjawKBj7",
     "testnetPubkey": "Azrcp6iMFxyah28xsHPEkZjDkwH7J1Z3uja7ueuMqmDD",
     "state": "TestnetOnboarded",
@@ -711,12 +645,6 @@
     "mainnetBetaPubkey": "CPWxeJJwXQc1qBAK8fmEf9Ai6gKAoUkxdao7VfgDb4Mv",
     "testnetPubkey": "CmHWWzDG924xqxEWkafBEDRyNcFRxRiHr66hB4z4SyJr",
     "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "5RWtPg6aDpWC42ge66g2iUFgN39VRcLgsk1JeR9fnEqF",
-    "testnetPubkey": "CHYTZMLVuaMzFBLUQq2sU24JxybYWtwHNz9aUunveHap",
-    "state": "Pending",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -816,21 +744,9 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "Gn42X1oKahctTqVz9LWET2f9Zf3s3gnCVxwM4fRDk1f3",
-    "testnetPubkey": "A4eJV1cKeZHpDBwzGubyjpNCXaEhfH3juZ8yBguyz8Lo",
-    "state": "Pending",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "5J1pCiYbfnBbpMkYKBeVVxBTpHug1uCyFJ8Vew3TtQzi",
     "testnetPubkey": "GuUHTL2bjonhXZQTrZZWdbBtv4zrNp7QYrn3964FMJ1w",
     "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "B3KbP8WgMZThtG5Y9jS4KpB92UjQLF46pqA6AyXqGBET",
-    "testnetPubkey": "Fhj8URmuNRGxLR4qnr1f1pr2hkRQticzx35inUXPWbui",
-    "state": "Pending",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -846,15 +762,21 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "2UJPXMyMYQYAKFHWRJsXP9k4nMjfiJh4ghqzNi2v6Epr",
-    "testnetPubkey": "2ndZJhnk3RSNXWCSRCo81AqoDoyVSLAySmLJNPcPS4dx",
-    "state": "TestnetOnboarded",
+    "mainnetBetaPubkey": "Gn42X1oKahctTqVz9LWET2f9Zf3s3gnCVxwM4fRDk1f3",
+    "testnetPubkey": "A4eJV1cKeZHpDBwzGubyjpNCXaEhfH3juZ8yBguyz8Lo",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "8xEprRsn1DhCuQgpyHApDThWd1KRy3jxrN6k2gW8H9Ds",
-    "testnetPubkey": "D8A2MA3Azqd3wynCexM1Gt1b843EZXvrvGNNry7KrPhA",
-    "state": "Pending",
+    "mainnetBetaPubkey": "B3KbP8WgMZThtG5Y9jS4KpB92UjQLF46pqA6AyXqGBET",
+    "testnetPubkey": "Fhj8URmuNRGxLR4qnr1f1pr2hkRQticzx35inUXPWbui",
+    "state": "Retired",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "2UJPXMyMYQYAKFHWRJsXP9k4nMjfiJh4ghqzNi2v6Epr",
+    "testnetPubkey": "2ndZJhnk3RSNXWCSRCo81AqoDoyVSLAySmLJNPcPS4dx",
+    "state": "TestnetOnboarded",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -873,6 +795,12 @@
     "mainnetBetaPubkey": "4GEEKSwuiBHWTff9WaqrDcToZjbX6KYdyB4c578Zxse2",
     "testnetPubkey": "4GEEKSqdnNLNT7YHEfNa2yB17ucVXxPrqeoyaw9ZPzoJ",
     "state": "TestnetOnboarded",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "8xEprRsn1DhCuQgpyHApDThWd1KRy3jxrN6k2gW8H9Ds",
+    "testnetPubkey": "D8A2MA3Azqd3wynCexM1Gt1b843EZXvrvGNNry7KrPhA",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -960,12 +888,6 @@
     "sfdp2OnboardingEpoch": 577
   },
   {
-    "mainnetBetaPubkey": "4JTEKMb2D9L7RxAJXU9DomHY2DMQvhgiQRzfDLyDRLuW",
-    "testnetPubkey": "kXmJDhP9o19CEc3a3wwLz9Frma36YTX5hZhqCzZUXet",
-    "state": "Pending",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "BDAZ4H4oDHGHcfB66trRpA5tGBQ1z4qLRuyZUwoaktBA",
     "testnetPubkey": "HMtri4bE9Vs3pztgZRtU21M9CuPhHTanZXtiuiR2azKk",
     "state": "Rejected",
@@ -999,12 +921,6 @@
     "mainnetBetaPubkey": "HNkhzPapCQdvhpBMZJSxqbqApLwBHovSN7d4nGAaFVoW",
     "testnetPubkey": "Bt4bGXmPSKorSaNLKeTLCumjwcTPaEmCm8wDr55LXGaL",
     "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "5nDFxEAJKaCbPeqEv84FTcYH9cy2MdDUWmWW8NyMPsUW",
-    "testnetPubkey": "Hwjv3mSrUnPNYzHvfVCptCEH4WCMTYGxxMj84ayxUsqG",
-    "state": "Pending",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -1068,9 +984,9 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "32PzEJCpuCdJso7DTfLqXfYX45DJudVHUiiZ424S48Le",
-    "testnetPubkey": "GCFWQCJu2LxvRwGwnPj86SguiRLAyayhPrz7AAniWmbA",
-    "state": "Pending",
+    "mainnetBetaPubkey": "4JTEKMb2D9L7RxAJXU9DomHY2DMQvhgiQRzfDLyDRLuW",
+    "testnetPubkey": "kXmJDhP9o19CEc3a3wwLz9Frma36YTX5hZhqCzZUXet",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -1230,12 +1146,6 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "CHn8T2JeHBY7vqbVkWBWtT8SPhgusMRFYmhMTL7qKQSH",
-    "testnetPubkey": "5wcnf8CV9mYsUijNnFEorLJ5jwjw2u73uNiNqM74hvFo",
-    "state": "Pending",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "Aw9baJPHoSSaYWiWyfNBRQbejXuwma73y1PacLd2qk34",
     "testnetPubkey": "38qQunQ7XgBgLuSZ38WH6Zd37G4LPXLTG7P9PMNxoB1J",
     "state": "Retired",
@@ -1344,12 +1254,6 @@
     "sfdp2OnboardingEpoch": 875
   },
   {
-    "mainnetBetaPubkey": "CkCMabrc3HgBgDkeKPXkbWuQpUuSqW7zs1Mg3HFArx61",
-    "testnetPubkey": "2oSmcj6LN626cVC3JcJUUCoKcW8GTnysRB5VjazZ7xus",
-    "state": "Pending",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "a1exwPymWZ9Z3ouEsYTrjLt3g7Fsf7DyfSF9BfmGser",
     "testnetPubkey": "7trWtWjH3cGfSu8z6MgkqEEuCJWN5NhRZBYvbT841Yi5",
     "state": "Rejected",
@@ -1359,12 +1263,6 @@
     "mainnetBetaPubkey": "i4cFPxvi49merMJBM8LtYgkWeBVYmYDKotFxWhe958e",
     "testnetPubkey": "B5cGBWob2LpcGTGdn1ReynQDDaCKiE5ePJecGj8wpBkg",
     "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "yg85xaNBsTXF3aEzryW4MJkob9dqmeNJ4bSbFgY2bEe",
-    "testnetPubkey": "BfYKSs9HjfCues4KEqsD7df7WgStk44pXw1Jow9AJPw9",
-    "state": "Pending",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -1518,12 +1416,6 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "UMi1r5J3SagSu4HC3waB3YFzbXi82rRSScgW2e8NTfr",
-    "testnetPubkey": "umi14Sh4WdCUNNdVGVYgVWqNcgu37rRZKJRF7JH3KPH",
-    "state": "Approved",
-    "sfdp2OnboardingEpoch": 821
-  },
-  {
     "mainnetBetaPubkey": "6UCNGC4L4n9oaBUNFZNRTXh58XhSdSPSMA6fiak2gErL",
     "testnetPubkey": "8W1gjte6qi4QRrnmkaLbLSF91gB2NV5oRKBVea6EgRDg",
     "state": "TestnetOnboarded",
@@ -1590,12 +1482,6 @@
     "sfdp2OnboardingEpoch": 817
   },
   {
-    "mainnetBetaPubkey": "5HCTsoKM7vwjubSZSyVWChaHQ9sNNRB1d2SuvL3eZ6Y6",
-    "testnetPubkey": "BVQMghBaNFnCFj8WN2KHBBFLWux39go9tN88SGtv7Jma",
-    "state": "Pending",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "WLMyNociUgCP4hmLPfTcpdm2hURYRjGziErBFrZC2Pp",
     "testnetPubkey": "5eDoqvce7CCs9Rjnck43MGhvtGq4RwwNCBn9HBiAjoHi",
     "state": "Rejected",
@@ -1614,12 +1500,6 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "cfLXpDw2epsQU3K3ca2MAZgeu2Dfj4QC38SchVfDnod",
-    "testnetPubkey": "cfL7RbyL1LNFRuMi5LsD3DRRDsDspr6qA5ZgzZUSnXE",
-    "state": "Pending",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "HHLHy9cwPS5bgNe8buRUx7jMapJ8Ye9RH9ELUJRRfAZh",
     "testnetPubkey": "613t5EV3fTFDM7xRx2sMmnHkCMs5wJJPc4kVNFS8u7fy",
     "state": "Pending",
@@ -1629,6 +1509,24 @@
     "mainnetBetaPubkey": "CR7nDX6audUUFT2d6VjvvyvosLPHaVayeY1NWcjrJiH9",
     "testnetPubkey": "4zW6qu1qt7xGEXNQxRYhwsy6GXCoiZE3rr45YrEtVARY",
     "state": "TestnetOnboarded",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "UMi1r5J3SagSu4HC3waB3YFzbXi82rRSScgW2e8NTfr",
+    "testnetPubkey": "umi14Sh4WdCUNNdVGVYgVWqNcgu37rRZKJRF7JH3KPH",
+    "state": "Approved",
+    "sfdp2OnboardingEpoch": 908
+  },
+  {
+    "mainnetBetaPubkey": "5HCTsoKM7vwjubSZSyVWChaHQ9sNNRB1d2SuvL3eZ6Y6",
+    "testnetPubkey": "BVQMghBaNFnCFj8WN2KHBBFLWux39go9tN88SGtv7Jma",
+    "state": "Pending",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "cfLXpDw2epsQU3K3ca2MAZgeu2Dfj4QC38SchVfDnod",
+    "testnetPubkey": "cfL7RbyL1LNFRuMi5LsD3DRRDsDspr6qA5ZgzZUSnXE",
+    "state": "Pending",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -1754,14 +1652,8 @@
   {
     "mainnetBetaPubkey": "mD1afZhSisoXfJLT8nYwSFANqjr1KPoDUEpYTEfFX1e",
     "testnetPubkey": "3zixBiBpLrXT9DjbPPsHn73w3YgQJ5vPcdnueyHvuTDq",
-    "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "7CR6whiYULVf1Knj4J5PxUS37opdk8UAx2WnDzBQKiVe",
-    "testnetPubkey": "BRDiZzBwLgCipxZfXe3NJ5H9K5gKo9Etm4i91Dy4agpw",
-    "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
+    "state": "Approved",
+    "sfdp2OnboardingEpoch": 896
   },
   {
     "mainnetBetaPubkey": "HAetDT2pRS6Dot2zUCcb6jPtHP3irngpUY5gMmF5g4d1",
@@ -1803,12 +1695,6 @@
     "mainnetBetaPubkey": "EWN6HEg9R93CMmzbzfYaKX4auwExBD57f7RJXvpnYhkL",
     "testnetPubkey": "ULbL3xcuEQBEYaug8hMXXoqnbDcZKAeoLmFXb3ryP5b",
     "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "SA1LFXr4os2P4VKGUyRv84uFfuUYgcQkFh2uA4SmRcr",
-    "testnetPubkey": "wa11gaVguATZF8SLWxHoa7QG25Uj2nyBBpGHxfJ2PVc",
-    "state": "Pending",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -1878,21 +1764,15 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "CEZVWWddUnuL4hosZp5CE5MMhADK34m4v9G51ESiwGL8",
-    "testnetPubkey": "79t7x4pEFuAYNLbrkanxJkEjCKDrkWhkZecqystUsrRz",
-    "state": "Pending",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "A74VDNWWER1oC8Tq13NTjyePa2sA5zxAyDkwW4RL4jCv",
     "testnetPubkey": "M3Uaf2iuKHaU8TF1quUa8RbAkmSdDA6RmYdCVLTQ1bb",
     "state": "Rejected",
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "8Rf7hLczBzGb71rmEjw3h9tTcxGijDiDHL651H9SfSFa",
-    "testnetPubkey": "6YfWuj8bF2cXsu512ZBHMBrdEWc31yuCHPZMhx2LJ3xb",
-    "state": "Pending",
+    "mainnetBetaPubkey": "SA1LFXr4os2P4VKGUyRv84uFfuUYgcQkFh2uA4SmRcr",
+    "testnetPubkey": "wa11gaVguATZF8SLWxHoa7QG25Uj2nyBBpGHxfJ2PVc",
+    "state": "TestnetOnboarded",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -1992,18 +1872,6 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "ViviahcScNWhdVhmSekAc5QGEJyEHRDs819waqQ83xg",
-    "testnetPubkey": "Vivi5hzSGU14pQaWoE4ggVAtwQUEG9c1gX5nBkhJtn7",
-    "state": "Approved",
-    "sfdp2OnboardingEpoch": 860
-  },
-  {
-    "mainnetBetaPubkey": "34mx1tsh8ZpdeSWAcj5Mqa7e2XoTnAsA6VrHLsg1BdRj",
-    "testnetPubkey": "GtaL7RZqNa1m8vQsecpnfTCsvWwWV9sU2mWFfN4tECUJ",
-    "state": "Pending",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "5essVpBYvocZkQnkrWsMDfRPwtp4BeihJRaweKLR4dRn",
     "testnetPubkey": "HW2gsWxuMaV15NgMTAphvC7TP8cXtPcNU6kRCwBdH6hq",
     "state": "Approved",
@@ -2022,8 +1890,20 @@
     "sfdp2OnboardingEpoch": null
   },
   {
+    "mainnetBetaPubkey": "ViviahcScNWhdVhmSekAc5QGEJyEHRDs819waqQ83xg",
+    "testnetPubkey": "Vivi5hzSGU14pQaWoE4ggVAtwQUEG9c1gX5nBkhJtn7",
+    "state": "Retired",
+    "sfdp2OnboardingEpoch": 860
+  },
+  {
     "mainnetBetaPubkey": "BCJN2vZFAHDYmufBDcbD5UAQHSyerXfc6UQkgX3mSWuh",
     "testnetPubkey": "9VsnbwpYs3nTj8dCBNMNairjsKTDdHL6PHezcQ6J2DRy",
+    "state": "Approved",
+    "sfdp2OnboardingEpoch": 906
+  },
+  {
+    "mainnetBetaPubkey": "34mx1tsh8ZpdeSWAcj5Mqa7e2XoTnAsA6VrHLsg1BdRj",
+    "testnetPubkey": "GtaL7RZqNa1m8vQsecpnfTCsvWwWV9sU2mWFfN4tECUJ",
     "state": "Pending",
     "sfdp2OnboardingEpoch": null
   },
@@ -2144,7 +2024,7 @@
   {
     "mainnetBetaPubkey": "FNTPSUuRpDoJx1hwFmB5ncNLLMX42aE83P4hsFYUfNRL",
     "testnetPubkey": "4RksyjUwpg4t8skiyfuLMfkLbLYnaD2QGWNqmbxatijc",
-    "state": "Pending",
+    "state": "TestnetOnboarded",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -2166,6 +2046,12 @@
     "sfdp2OnboardingEpoch": null
   },
   {
+    "mainnetBetaPubkey": "6tG5beZ3dZ5Mn6dvFguJQuKXB1cBnqpLY6ZpCy5TnCFN",
+    "testnetPubkey": "9Tc7jWjSyizM6yH3razD8m4QqvLyujRKXc7mSQXWaxZP",
+    "state": "TestnetOnboarded",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
     "mainnetBetaPubkey": "95ZRr8H8jjkTeLy6X872vrKWtmTaLWEwMGPpyUQxBf5d",
     "testnetPubkey": "uYLGYX33NZ2uf9i2s3i8YDBFgyZggLWFca8qPAeWEFy",
     "state": "TestnetOnboarded",
@@ -2181,12 +2067,6 @@
     "mainnetBetaPubkey": "C1G2amHqUDLHoMecQm9efNcxjurb7PGfDomqiJ4iD4kD",
     "testnetPubkey": "Hd3SfRsqnuGGuKKyfM6HjMS2P4i7JuSoYmfoD2FhNDx6",
     "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "6tG5beZ3dZ5Mn6dvFguJQuKXB1cBnqpLY6ZpCy5TnCFN",
-    "testnetPubkey": "9Tc7jWjSyizM6yH3razD8m4QqvLyujRKXc7mSQXWaxZP",
-    "state": "Pending",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -2218,12 +2098,6 @@
     "testnetPubkey": "GoTASqfx7x89qYqCNL4ozeDR1KhGTFGBs2J6DD7PhBV",
     "state": "Approved",
     "sfdp2OnboardingEpoch": 808
-  },
-  {
-    "mainnetBetaPubkey": "FgHgqXgn2sJvZnn8itjTcAeFQWSKt4JmdfYZUVEP26ot",
-    "testnetPubkey": "BUZdr8LsrpAMtf2VyQ5QBH8cwa6TEkwM3BQ1b3zhsxf",
-    "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
   },
   {
     "mainnetBetaPubkey": "B2rM4iLNN7pC8fFKLzHwkbaeGEsyvMAJdpDxA4rTifYu",
@@ -2258,6 +2132,18 @@
   {
     "mainnetBetaPubkey": "3KCUsp44NHV1T2UD3L7qWV727mprGFXg2ZcNEA6LqGKn",
     "testnetPubkey": "7XDmwFfTELzMKkvPA2giF3mLhkYPuiE48KMV88FKgVsA",
+    "state": "Retired",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "8uYvLnUTZjFgmZuDrCyHDTT9KyL97j1MrMYfWHALqVkE",
+    "testnetPubkey": "GqHPrWTVdWvjBRDg8c65dt18S7huoQggSjLzyooX8ryv",
+    "state": "Approved",
+    "sfdp2OnboardingEpoch": 896
+  },
+  {
+    "mainnetBetaPubkey": "FgHgqXgn2sJvZnn8itjTcAeFQWSKt4JmdfYZUVEP26ot",
+    "testnetPubkey": "BUZdr8LsrpAMtf2VyQ5QBH8cwa6TEkwM3BQ1b3zhsxf",
     "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
@@ -2301,12 +2187,6 @@
     "mainnetBetaPubkey": "7K2Fmdsfqekaq2f115PvD5Jzq4bTP7fSmHfe8Dq9ChBH",
     "testnetPubkey": "2npkgxf8TS3UEdusSy4gxCcjNdB3ycireGG1kDq8R8Fs",
     "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "TREEsnpbTEW5u8qgjWVL4f17bHUxr31iK3ASSEJFAtf",
-    "testnetPubkey": "idUciuYMZ5LC5MpUdKws1EirpDNvUsKBu1xjSpLksxe",
-    "state": "Pending",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -2382,10 +2262,28 @@
     "sfdp2OnboardingEpoch": null
   },
   {
+    "mainnetBetaPubkey": "CEZVWWddUnuL4hosZp5CE5MMhADK34m4v9G51ESiwGL8",
+    "testnetPubkey": "79t7x4pEFuAYNLbrkanxJkEjCKDrkWhkZecqystUsrRz",
+    "state": "TestnetOnboarded",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
     "mainnetBetaPubkey": "5EvPzUC1QSG5nUrZBLXwbi4C1SAW3jJWpCe7GwDDKAKa",
     "testnetPubkey": "Es1bTnkT94o4DxhZEbyc1hrmVWLQ1NaS9x5JMiBcXN6E",
     "state": "Rejected",
     "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "7CR6whiYULVf1Knj4J5PxUS37opdk8UAx2WnDzBQKiVe",
+    "testnetPubkey": "BRDiZzBwLgCipxZfXe3NJ5H9K5gKo9Etm4i91Dy4agpw",
+    "state": "Approved",
+    "sfdp2OnboardingEpoch": 896
+  },
+  {
+    "mainnetBetaPubkey": "96ntnthk8tMSCb6u96rowgk7zmMb5PMgURkJ5Eudxnyt",
+    "testnetPubkey": "81W1KbFXQRjiNBr5vQ5yroiGxx7Kh4xkxncLiJvSsAYW",
+    "state": "Approved",
+    "sfdp2OnboardingEpoch": 896
   },
   {
     "mainnetBetaPubkey": "7Z7waijvuiYoYeEv5X1JC4pocEuB9cTtvDEZLKLy74te",
@@ -2478,10 +2376,22 @@
     "sfdp2OnboardingEpoch": null
   },
   {
+    "mainnetBetaPubkey": "CkCMabrc3HgBgDkeKPXkbWuQpUuSqW7zs1Mg3HFArx61",
+    "testnetPubkey": "2oSmcj6LN626cVC3JcJUUCoKcW8GTnysRB5VjazZ7xus",
+    "state": "TestnetOnboarded",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
     "mainnetBetaPubkey": "sfvTq7ojrEc5WdXcHijz676eX1pc5MgoLxbkYSdRDAB",
     "testnetPubkey": "sfXYzEoBcEkfspXJD5NxiXREqk9NntvG6gZigB4rZpv",
     "state": "Approved",
     "sfdp2OnboardingEpoch": 845
+  },
+  {
+    "mainnetBetaPubkey": "8Rf7hLczBzGb71rmEjw3h9tTcxGijDiDHL651H9SfSFa",
+    "testnetPubkey": "6YfWuj8bF2cXsu512ZBHMBrdEWc31yuCHPZMhx2LJ3xb",
+    "state": "Approved",
+    "sfdp2OnboardingEpoch": 896
   },
   {
     "mainnetBetaPubkey": "5StSiv81DqBudLYyWpUrhC6TAG7P9hsC3fnjfxMhpsZ9",
@@ -2568,6 +2478,18 @@
     "sfdp2OnboardingEpoch": null
   },
   {
+    "mainnetBetaPubkey": "TopjgY7N1fJdnW89S9fX6t7LF61nspgXGL1NpgAKhDG",
+    "testnetPubkey": "6kZL9bcz9Kq5SEkxHxG35SNJdCs21aJpLGPeHKReNLeX",
+    "state": "Pending",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "sp1mwUBiVzQPaNQoMrfSNYYfxViFrLDiBXs2pc4kG3k",
+    "testnetPubkey": "sp1t2yvfgHFfgwtYouK66PYbtbNm6DebP466bzxtRx3",
+    "state": "Pending",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
     "mainnetBetaPubkey": "4k6wgP5WPBKQpsFGtzuXNrjcTE2fKWLj17nDvFeG5zSF",
     "testnetPubkey": "ByMkAg2cPLMn3WuZpF2Rf1kfuuHxZmhDhBjZmy9VDDua",
     "state": "Approved",
@@ -2592,6 +2514,18 @@
     "sfdp2OnboardingEpoch": null
   },
   {
+    "mainnetBetaPubkey": "BVSKp2GfzkNaBGtpspsfxr4eYYSGCtSC8j9x1NsX16qG",
+    "testnetPubkey": "BMKpfnRU9GjrP4ExGxSbUriSj1k5jfST6Kw9FPQc3C3Y",
+    "state": "TestnetOnboarded",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "ATLASnUj1UaihWWVDRBJm9zcD1Wu76Yd3HamUpT5ggdB",
+    "testnetPubkey": "ATLAMw1Nm17dcKt2zoda1W8RTffuFqQkCtNfmLKpeQFD",
+    "state": "Retired",
+    "sfdp2OnboardingEpoch": 845
+  },
+  {
     "mainnetBetaPubkey": "FNmTpJSDdPPPRbr5cUs9DEm9B3aP9kkNqE224TJ9UTYJ",
     "testnetPubkey": "By9835gWCc6iukWAci9BHjXhdd4EC7Pss69sjahiutdZ",
     "state": "Rejected",
@@ -2604,9 +2538,21 @@
     "sfdp2OnboardingEpoch": 782
   },
   {
+    "mainnetBetaPubkey": "CAppB56Dii3TQL38yScwuc6yaan6u7pwax9yy2JVbycK",
+    "testnetPubkey": "BoiZkgyJ6mmkPmAN7bMfLgrY5xovy58jSJtJzaoM54Bz",
+    "state": "Pending",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "3ctREA9McNt4DshXLLjfAW2SAx4uATmQg9zGc4T4en91",
+    "testnetPubkey": "C1D76iBsZxzUxZ85TK1GgLK8NumDSMrYpRTAK4rqiiTY",
+    "state": "TestnetOnboarded",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
     "mainnetBetaPubkey": "kom1oNHyyt84XLGVfi5Jo1qkVkU5xG1sBxPG19rWknE",
     "testnetPubkey": "4q87VFsFLBZD81dbBBCkCoHX5yWZbYMFPMo6Pnctux3y",
-    "state": "Approved",
+    "state": "Rejected",
     "sfdp2OnboardingEpoch": 825
   },
   {
@@ -2636,6 +2582,12 @@
   {
     "mainnetBetaPubkey": "6cP9LHvv8HTCE45PLvqmnfZubrKQcRvsatMjQGkr8kb5",
     "testnetPubkey": "GhSUQYW749JVZZbzJ6YaJJiVksHmVJhmym9RsfeQW3WW",
+    "state": "TestnetOnboarded",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "capyS1jerxhFp1RehdWRG6kbWi8bnWF3fkEG2RGLsQf",
+    "testnetPubkey": "4bxETbV5KWFuRihybgAxkwxemmd9MJc7oceYFaqWhifA",
     "state": "TestnetOnboarded",
     "sfdp2OnboardingEpoch": null
   },
@@ -2694,6 +2646,12 @@
     "sfdp2OnboardingEpoch": null
   },
   {
+    "mainnetBetaPubkey": "AciHSqStsUhPG5AvFqRFV39Nh4sk8y9yyR7wZKfKQ54p",
+    "testnetPubkey": "2MQz71XayMoodiN3gaSHnw5qBuURL1z9ybRYGGqkaM1J",
+    "state": "Pending",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
     "mainnetBetaPubkey": "2kA9PkYMw8fEeuzvsZa5QQDm4oL9qKpsZH9nBBywGKxR",
     "testnetPubkey": "BPiX3PtFhyXAZ7bwZfNBBGd4hU2MCBYZPazvjvSVHaez",
     "state": "Retired",
@@ -2712,6 +2670,12 @@
     "sfdp2OnboardingEpoch": null
   },
   {
+    "mainnetBetaPubkey": "FNABu1NP99cHhKadAkk5uxoKeTxqeYqqbdcAJwREoqWi",
+    "testnetPubkey": "AWZ5AXbhRfoGDm3ekCNJQWP8vQCP4rWqzezK5G967qJK",
+    "state": "Pending",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
     "mainnetBetaPubkey": "kREnNfJrPEHbrjSQDxmxZdGmN6hi7ewXZ3UZTURshrk",
     "testnetPubkey": "7B1r5z3DxiN2H5E3R4LNydouso57Xa2MHCVYYMQshrk",
     "state": "Approved",
@@ -2721,12 +2685,6 @@
     "mainnetBetaPubkey": "55G1bZrxqkVbEoavP5pntLEHVkg6zsUgcLB8sGg7r2ze",
     "testnetPubkey": "HGUoS3wvVnTKwyQfXt8Fc3qKaoi39WBj4KEt4VcH9UXk",
     "state": "Rejected",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "13beVc3q6yM3g6arBswkzSxB1NdBibcr2jcSsxotFfB1",
-    "testnetPubkey": "bQLwQ3C8jhxuj3ubHErMHKgxKFDgnLR9H7ayA38fzjB",
-    "state": "TestnetOnboarded",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -2838,9 +2796,21 @@
     "sfdp2OnboardingEpoch": null
   },
   {
+    "mainnetBetaPubkey": "13beVc3q6yM3g6arBswkzSxB1NdBibcr2jcSsxotFfB1",
+    "testnetPubkey": "bQLwQ3C8jhxuj3ubHErMHKgxKFDgnLR9H7ayA38fzjB",
+    "state": "Retired",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
     "mainnetBetaPubkey": "FNGwNqAr37rwNt5j9EqXMXEp5hGZVuPxAFU8wA9ogetY",
     "testnetPubkey": "A9jF8uhw789nQTKffCoJEXNXEWc2tAa2ahwV4DB4LtFu",
     "state": "TestnetOnboarded",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "thorMioHDc25Z2dsPtaNtoe7kmMRBVNC6XXfbwHKpzU",
+    "testnetPubkey": "thorNNMs3a7UKRMH48uSaB5KA6BC5zZPEKN5v8YPJyL",
+    "state": "Pending",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -3254,7 +3224,7 @@
   {
     "mainnetBetaPubkey": "ALongLbys72YMTeN6Kuy1iWdQ6FQmgALgvTcNzunVLMw",
     "testnetPubkey": "5TkQK1n2YSne514xt31MTCvKkDGjvt6N8gpwGu2Kd5LJ",
-    "state": "TestnetOnboarded",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -3540,6 +3510,12 @@
     "sfdp2OnboardingEpoch": null
   },
   {
+    "mainnetBetaPubkey": "E7LwALCDMhC9bxsAH6T2SSxitvFM48tXitPKYFNSvrzn",
+    "testnetPubkey": "9hjioBRMJAFskq2J66Z7kWHNbKG193PEjSBrpyDMZhMs",
+    "state": "Retired",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
     "mainnetBetaPubkey": "4W6Z319cavxph8naTx6bP5Dngmnoivr9BCwv8NK9PRwH",
     "testnetPubkey": "2RkY8ZVfgxakqktDKeKDx2EzvL2PNV4khcJyP5enU9QM",
     "state": "TestnetOnboarded",
@@ -3567,12 +3543,6 @@
     "mainnetBetaPubkey": "GBGW4K7R79Gaaeot3m6A7CgT7kWzDp2TSs8highVExAK",
     "testnetPubkey": "G9FK4UJWbgNpMDmdC5PFJCcWo3zSaYJ8P3D1FR5BuDog",
     "state": "Rejected",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "E7LwALCDMhC9bxsAH6T2SSxitvFM48tXitPKYFNSvrzn",
-    "testnetPubkey": "9hjioBRMJAFskq2J66Z7kWHNbKG193PEjSBrpyDMZhMs",
-    "state": "TestnetOnboarded",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -3996,6 +3966,12 @@
     "sfdp2OnboardingEpoch": null
   },
   {
+    "mainnetBetaPubkey": "5S1vPAd2MRJ9WyLAK8mfLQ2Jz43oQHX5pFGVkAyaxLb7",
+    "testnetPubkey": "7pQTPTnEoLd1ycpRNZXmxfHP3bjbqUUN1LfybHnNoet6",
+    "state": "Rejected",
+    "sfdp2OnboardingEpoch": 754
+  },
+  {
     "mainnetBetaPubkey": "VALP62MrtNDhQbTbfx2DGDANx5NNxZxFc7EYBX85DuH",
     "testnetPubkey": "VALTAkFC9z5pgdop8M8CZSkd3iEUqxdKux6xKWqB8jM",
     "state": "Retired",
@@ -4012,12 +3988,6 @@
     "testnetPubkey": "E7VyhbeBervYPVK578G7Hk843TUxZKiKsv56C89Ai7nD",
     "state": "Rejected",
     "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "5S1vPAd2MRJ9WyLAK8mfLQ2Jz43oQHX5pFGVkAyaxLb7",
-    "testnetPubkey": "7pQTPTnEoLd1ycpRNZXmxfHP3bjbqUUN1LfybHnNoet6",
-    "state": "Approved",
-    "sfdp2OnboardingEpoch": 754
   },
   {
     "mainnetBetaPubkey": "GNwwAX1vUEjC2vKcbcECy8cNGuJC6JjeLeZ7PY4QJLhJ",
@@ -4248,6 +4218,12 @@
     "sfdp2OnboardingEpoch": null
   },
   {
+    "mainnetBetaPubkey": "EcdsVWt3h7nonV8NCRN9mXDLEkndwUdAAnYyymzijL1C",
+    "testnetPubkey": "C25vFJYJQVzSsJUbpGwpfGMgJvwqxnzN7YDu3ExPgHqW",
+    "state": "Retired",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
     "mainnetBetaPubkey": "5onekhoX4fBw8S5ho4s55oHNSyUrFcdHJCCj3LLVDnaH",
     "testnetPubkey": "56udb5U6M6LUQYB7TQ2BLeSXH8nKu7whFpQqBEf2JpSz",
     "state": "TestnetOnboarded",
@@ -4310,12 +4286,6 @@
   {
     "mainnetBetaPubkey": "5JsuQbjrmNBjEo41ptaMGiaCPhYWFpzhsx4cNmkYt8P6",
     "testnetPubkey": "H2FDu3zMT4nihD4qR8d5rr732ptKWrJqbeKUyazemCGC",
-    "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "EcdsVWt3h7nonV8NCRN9mXDLEkndwUdAAnYyymzijL1C",
-    "testnetPubkey": "C25vFJYJQVzSsJUbpGwpfGMgJvwqxnzN7YDu3ExPgHqW",
     "state": "TestnetOnboarded",
     "sfdp2OnboardingEpoch": null
   },
@@ -4668,12 +4638,6 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "EwHVccnPZiao4hP211pUzSLY1TbhGfUBYnbF1WUzWL9q",
-    "testnetPubkey": "55qoxSatyLEh3RiHZihCXZvK5bu55XPydNuneH7V9YaW",
-    "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "ATF3HrYkmXpJtvKnZSUe82Yq2XFkNpL8Vb41i44S1nPP",
     "testnetPubkey": "EjGwW6Se2irvNfFx4NkSrTvbpWCRVema7tWDbqoGYe6z",
     "state": "Rejected",
@@ -4704,12 +4668,6 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "A8iQkVUrxSBLtL1KattHbKTFDFu6zzZFx4WzvFW8az2E",
-    "testnetPubkey": "A7PfCnyQndcGHeqf2hGDaC5f3RGbfsqUa3qtxv5ZfY8G",
-    "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "46wXwHv4CGyZ36qsgvmNS3ysp1A4U3Nkrg2HxPVJURLM",
     "testnetPubkey": "443KPLZ31JyGZ6VWEJ4SxBx5X18yhuEkLAPKCzoMQsoM",
     "state": "Retired",
@@ -4725,6 +4683,12 @@
     "mainnetBetaPubkey": "98SochwZbrTGXQzHeaUwjzhKNLGr5uTCoKBN9v9R1r4U",
     "testnetPubkey": "HPkuxdyjcnmng19K8M5XXLb6nKVNXg1jtMap7VyKX6km",
     "state": "TestnetOnboarded",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "EwHVccnPZiao4hP211pUzSLY1TbhGfUBYnbF1WUzWL9q",
+    "testnetPubkey": "55qoxSatyLEh3RiHZihCXZvK5bu55XPydNuneH7V9YaW",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -4761,6 +4725,12 @@
     "mainnetBetaPubkey": "FXucbb43YX8oSGWntE2PbnYYcKkWbmDGFKnwNsyKDvC",
     "testnetPubkey": "D1D8ZGjau4baXR29i4xNJsVMbL2aDuWemZyyUPrLLVvr",
     "state": "Rejected",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "A8iQkVUrxSBLtL1KattHbKTFDFu6zzZFx4WzvFW8az2E",
+    "testnetPubkey": "A7PfCnyQndcGHeqf2hGDaC5f3RGbfsqUa3qtxv5ZfY8G",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -5256,6 +5226,12 @@
     "sfdp2OnboardingEpoch": null
   },
   {
+    "mainnetBetaPubkey": "2Ue9zGmDnvYRrJNEjuAdNkbbickw6fKWtbeNM7T2rakg",
+    "testnetPubkey": "2ZZkgKcBfp4tW8qCLj2yjxRYh9CuvEVJWb6e2KKS91Mj",
+    "state": "Rejected",
+    "sfdp2OnboardingEpoch": 577
+  },
+  {
     "mainnetBetaPubkey": "3DEwiYNiZCnrwF3wF5V9BZt4hXJqF6MNNKw8L5a9Gc1j",
     "testnetPubkey": "84trBtiahYmLFn9gkNyeGqtLpuGSaF6Ue59YCx6HXTq5",
     "state": "TestnetOnboarded",
@@ -5302,12 +5278,6 @@
     "testnetPubkey": "DJFSgh2m1K2BkDAeF7u3Aas6aZoAVjhfrCxS3DbCDSPJ",
     "state": "Rejected",
     "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "2Ue9zGmDnvYRrJNEjuAdNkbbickw6fKWtbeNM7T2rakg",
-    "testnetPubkey": "2ZZkgKcBfp4tW8qCLj2yjxRYh9CuvEVJWb6e2KKS91Mj",
-    "state": "Approved",
-    "sfdp2OnboardingEpoch": 577
   },
   {
     "mainnetBetaPubkey": "A7Ld7QSJuKzyxUTmPwgn4ny1GQ85AKsybuLxM6D1xrN1",
@@ -6030,12 +6000,6 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "KTMkUG8WCw9FdH44jLMBpc1teGafnYL6SgP4fHHbsNM",
-    "testnetPubkey": "TKMNqvfwb7PKkc9KFEJJ8EaNK9s5XjNWgFS6oyqSLkp",
-    "state": "Approved",
-    "sfdp2OnboardingEpoch": 605
-  },
-  {
     "mainnetBetaPubkey": "8aQxZVaBGUH6TQ75BF2oZfkeQKXMeCrakaEVr2yTjgUo",
     "testnetPubkey": "3ztHmgc9cBehYdcWvEKCJ4EfsUYq9751E1N4S8PH5pn7",
     "state": "Rejected",
@@ -6070,6 +6034,12 @@
     "testnetPubkey": "B5j1FLYsunj3vVpWG3wDBxGfVMFMZQmQFzV2JQJinibN",
     "state": "TestnetOnboarded",
     "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "KTMkUG8WCw9FdH44jLMBpc1teGafnYL6SgP4fHHbsNM",
+    "testnetPubkey": "TKMNqvfwb7PKkc9KFEJJ8EaNK9s5XjNWgFS6oyqSLkp",
+    "state": "Rejected",
+    "sfdp2OnboardingEpoch": 605
   },
   {
     "mainnetBetaPubkey": "DuHHUedTWB5TYQJyQNs2nsrYMLJLWqsyKED5Pc9Dx32G",
@@ -6870,12 +6840,6 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "CQnCohjBGRF1dHsuSKo7xhMTDKEcRMr9u4QgyuQnyYdR",
-    "testnetPubkey": "F3v6pKECpKRWtZmrHjTBhdGcsEmBiiKtJNFnavULDweS",
-    "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "HGxuzkeuu9CnsysJWXzDM54SVgBhrVq53qn8GivYgsss",
     "testnetPubkey": "iwf4VCAm2WYfHMWkGC6p7PScW5vihfVrXs8UTnMuHuc",
     "state": "Rejected",
@@ -6927,6 +6891,12 @@
     "mainnetBetaPubkey": "6iaEpbdeWKd5bCPBw3vHsRTfpA8XUZqUwRYREdkmzjRz",
     "testnetPubkey": "D5nZHcE9RwEDKJLWReepAxsMvYsHC3TP3TQuXhXN6AdQ",
     "state": "Rejected",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "CQnCohjBGRF1dHsuSKo7xhMTDKEcRMr9u4QgyuQnyYdR",
+    "testnetPubkey": "F3v6pKECpKRWtZmrHjTBhdGcsEmBiiKtJNFnavULDweS",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -8654,7 +8624,7 @@
   {
     "mainnetBetaPubkey": "8YzxvgkLeW6eGMdDwpuxzrhy4czAqVWyvPRg5ehi2Hve",
     "testnetPubkey": "8hfRovLwHnXFZY2d1uDx4Bz2NSwKx2VwDFNDoixvZXvh",
-    "state": "TestnetOnboarded",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -8874,6 +8844,12 @@
     "sfdp2OnboardingEpoch": 577
   },
   {
+    "mainnetBetaPubkey": "FmaVX7HuaaLRc3jy7HZktJX18hsk2S3MWdt6vYKiMweT",
+    "testnetPubkey": "DeeYrATizooKrRSprLfXKV9UzxP8HELioY8iLWMzBo4M",
+    "state": "Rejected",
+    "sfdp2OnboardingEpoch": 754
+  },
+  {
     "mainnetBetaPubkey": "2VHAybUS7wT3TNa9qJP5FWNzaHu1d1jJp9Lz9oAg83Jj",
     "testnetPubkey": "9FWrxo7Ja1u6GNLUtiJxJ4jGsyBKRAC6zvkvAHcAZPRK",
     "state": "TestnetOnboarded",
@@ -8926,12 +8902,6 @@
     "testnetPubkey": "DjfKo55WZfkTdWhqUAGtnqCmW26Vge4M9vH98UYCHHQh",
     "state": "TestnetOnboarded",
     "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "FmaVX7HuaaLRc3jy7HZktJX18hsk2S3MWdt6vYKiMweT",
-    "testnetPubkey": "DeeYrATizooKrRSprLfXKV9UzxP8HELioY8iLWMzBo4M",
-    "state": "Approved",
-    "sfdp2OnboardingEpoch": 754
   },
   {
     "mainnetBetaPubkey": "8tYSjYcvK22bG4DQvcBzvbsHzCQB7JCuijwbQmkBGKys",
@@ -10154,7 +10124,7 @@
   {
     "mainnetBetaPubkey": "CbdbQRHbx41GxKsrMPDJA35qS6vRqYRxBivPxCvefRCB",
     "testnetPubkey": "FNdjDbWsPRe7CewJyy5dCJaeT7NR5XDvUPwEdvhVJZWn",
-    "state": "TestnetOnboarded",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -10554,6 +10524,12 @@
     "sfdp2OnboardingEpoch": null
   },
   {
+    "mainnetBetaPubkey": "GrA8EyDvdKSFFBJNzXJRFZoCFEEAbm2U7swCMaERpc3F",
+    "testnetPubkey": "5S2aGiJP595YBZdHbEiek4xvBPE49siS7K9Pje1u9Fte",
+    "state": "Retired",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
     "mainnetBetaPubkey": "2a6gAopniBmZno3PzBYZptXWE6Bew5BxoxGd3k84xu8W",
     "testnetPubkey": "C2wdaDNBfChUj65So5pa4jYdgXzLo3sEo5Phsyr2vLWT",
     "state": "Rejected",
@@ -10611,12 +10587,6 @@
     "mainnetBetaPubkey": "GsRyRaoEs5KY2tLPg2jCgrmePgEz6oqGN4hNfBBQ179h",
     "testnetPubkey": "FUMXchSDGUhoEuoHWDegU1rkQigFJLVjgonYe5DQDdxy",
     "state": "Retired",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "GrA8EyDvdKSFFBJNzXJRFZoCFEEAbm2U7swCMaERpc3F",
-    "testnetPubkey": "5S2aGiJP595YBZdHbEiek4xvBPE49siS7K9Pje1u9Fte",
-    "state": "TestnetOnboarded",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -11370,6 +11340,12 @@
     "sfdp2OnboardingEpoch": null
   },
   {
+    "mainnetBetaPubkey": "DupN8puwoPdFo9EYm8AXemEn9cMsore1QmZzfPaxyUG4",
+    "testnetPubkey": "Bp2KKQrzY99LJTeDSG9xLFRrVGoiU1VBnknNhH451Qmp",
+    "state": "Approved",
+    "sfdp2OnboardingEpoch": 760
+  },
+  {
     "mainnetBetaPubkey": "Hhn4usDjnktbPURJHbi4YrPdKudBD5Qq35mTcaQ3Uu6",
     "testnetPubkey": "GpowxwT8wY9x2uFLWhZtL3ELFdAMnpBxTrpqFgnEukVn",
     "state": "Rejected",
@@ -11380,12 +11356,6 @@
     "testnetPubkey": "Af3BY8yRnmGLSX3XZsWoCS4UrCravpZuVY1UofrE28sS",
     "state": "Rejected",
     "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "GQqxGEmi6aMBZtcfmfmC5Jgx33X57ksvNYoo8bMH52T9",
-    "testnetPubkey": "Bp2KKQrzY99LJTeDSG9xLFRrVGoiU1VBnknNhH451Qmp",
-    "state": "Approved",
-    "sfdp2OnboardingEpoch": 760
   },
   {
     "mainnetBetaPubkey": "BM9pK8DhaMz9ey85Jp1nKLWrU47VU5jbCfvZCJd4Bn97",
@@ -12260,7 +12230,7 @@
   {
     "mainnetBetaPubkey": "wK7frzLd4UmpudFZFgN9kG4oe1iAsJ9e9TmnxBv2cU2",
     "testnetPubkey": "2YHziUZr1cNR5SEH8pTRMDFXJX5eS5Phqj8TaDvuM6DU",
-    "state": "TestnetOnboarded",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -13538,7 +13508,7 @@
   {
     "mainnetBetaPubkey": "5XnDFyzZv8MsBKkX1hXbm9cmkao9jQ8SXs5FGWqQdYmM",
     "testnetPubkey": "GQYqxRBe62ZUUio8KGriRjKVErbxxQXnV7aurmjKak5N",
-    "state": "TestnetOnboarded",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -13692,12 +13662,6 @@
     "sfdp2OnboardingEpoch": 676
   },
   {
-    "mainnetBetaPubkey": "RockDZ9SDFvyMgiZ3K6Hs5ajJwfrmdYuEscGHtZoar7",
-    "testnetPubkey": "5QzdiAwa2LhUiDFBtnmXZYfo7vZtpTa1ex2TiTejQ48a",
-    "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "Ha6sznSQMgsViXwFjm94XYN7YUBmNeZrHwz34vzkEZ2G",
     "testnetPubkey": "9CHFQoPd7eLqi6NyB8eXxkzj74zhFMLmQ3gvb5uTXZKq",
     "state": "Retired",
@@ -13725,6 +13689,12 @@
     "mainnetBetaPubkey": "9tV89mr1HprxxVDvAGJJzCeEu6xh9iL1Z1VcEbtxkc9E",
     "testnetPubkey": "76GQTwyqPRFnJwc7sEX9KzcJdk3qKsnTcgWibqdxN3mB",
     "state": "Rejected",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "RockDZ9SDFvyMgiZ3K6Hs5ajJwfrmdYuEscGHtZoar7",
+    "testnetPubkey": "5QzdiAwa2LhUiDFBtnmXZYfo7vZtpTa1ex2TiTejQ48a",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -15414,14 +15384,14 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "CqjwobUpeB5M1ukhZiDV76gdZEs1jQKKkmbBcc6QDypL",
-    "testnetPubkey": "5vha8GHLhw4eGMnY44waYPdFqynbhCvkxCDBXBr3qcbp",
-    "state": "TestnetOnboarded",
+    "mainnetBetaPubkey": "6Ycac5btFqoi8vcaoTov8Pw5UUq8Mh9nCEa6NAUB9ozB",
+    "testnetPubkey": "A7sxZnor37uwHg47ZxkhgNwxko3ujF2Av2Kuzjd7v8g3",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "6Ycac5btFqoi8vcaoTov8Pw5UUq8Mh9nCEa6NAUB9ozB",
-    "testnetPubkey": "A7sxZnor37uwHg47ZxkhgNwxko3ujF2Av2Kuzjd7v8g3",
+    "mainnetBetaPubkey": "CqjwobUpeB5M1ukhZiDV76gdZEs1jQKKkmbBcc6QDypL",
+    "testnetPubkey": "5vha8GHLhw4eGMnY44waYPdFqynbhCvkxCDBXBr3qcbp",
     "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
@@ -16158,14 +16128,14 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "9XV8PMbx4o4Q9puLkF6XfdsrPpYd7HyninSnjEAcXTvg",
-    "testnetPubkey": "4MpwMktf8d4Y6XYBN1Tks88h22yPbFZtG3ApST5sZAyL",
-    "state": "TestnetOnboarded",
+    "mainnetBetaPubkey": "Dq1Mq4KAYWZV1RydSc9v5JwEEJnAmDofG82e7xKkiUCW",
+    "testnetPubkey": "4vjNmx14RJo1yWzN5EKqzoDHsCQXkNvJBN2HDhX6TuqZ",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "Dq1Mq4KAYWZV1RydSc9v5JwEEJnAmDofG82e7xKkiUCW",
-    "testnetPubkey": "4vjNmx14RJo1yWzN5EKqzoDHsCQXkNvJBN2HDhX6TuqZ",
+    "mainnetBetaPubkey": "9XV8PMbx4o4Q9puLkF6XfdsrPpYd7HyninSnjEAcXTvg",
+    "testnetPubkey": "4MpwMktf8d4Y6XYBN1Tks88h22yPbFZtG3ApST5sZAyL",
     "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
@@ -16788,14 +16758,20 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "MARSpwfrvgU1px45Z8yMWcww6QkJiprZuXd6P161YSv",
-    "testnetPubkey": "FNA67gKEpxPXXPPmkcsMtVTLDfDbAQPpTbcpSrAeyPKM",
-    "state": "TestnetOnboarded",
+    "mainnetBetaPubkey": "HxnjguvpJpwBK3PPoXxQqNFfH8HEzxsrdjuxaewY1yLm",
+    "testnetPubkey": "5dTrYHxT4WTa7mM4FKkavfb8aBnAW4G7uUuiGs9sJ5va",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "HxnjguvpJpwBK3PPoXxQqNFfH8HEzxsrdjuxaewY1yLm",
-    "testnetPubkey": "5dTrYHxT4WTa7mM4FKkavfb8aBnAW4G7uUuiGs9sJ5va",
+    "mainnetBetaPubkey": "CmHAicGXp6boDhgp7Kb1JbPcvf7GstyK2yMyMxZY2pKU",
+    "testnetPubkey": "5nK9W7h3YWGiyTmLx9j1NvL6b99vso4yCFnP9f1DhVEG",
+    "state": "Rejected",
+    "sfdp2OnboardingEpoch": 577
+  },
+  {
+    "mainnetBetaPubkey": "MARSpwfrvgU1px45Z8yMWcww6QkJiprZuXd6P161YSv",
+    "testnetPubkey": "FNA67gKEpxPXXPPmkcsMtVTLDfDbAQPpTbcpSrAeyPKM",
     "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
@@ -16804,12 +16780,6 @@
     "testnetPubkey": "33npJDEcEcnv9vUqMmNHuXtsT3b4fDZqcwuC6993J95C",
     "state": "Rejected",
     "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "CmHAicGXp6boDhgp7Kb1JbPcvf7GstyK2yMyMxZY2pKU",
-    "testnetPubkey": "5nK9W7h3YWGiyTmLx9j1NvL6b99vso4yCFnP9f1DhVEG",
-    "state": "Approved",
-    "sfdp2OnboardingEpoch": 577
   },
   {
     "mainnetBetaPubkey": "DjEg11fkb4on8WePBxxZYqRx15b8t4XVBR4GcnMy785H",
@@ -22374,6 +22344,12 @@
     "sfdp2OnboardingEpoch": null
   },
   {
+    "mainnetBetaPubkey": "CnevKtH5zaThFqJmpWZSBzjEMY8bsWiVkkeP6GVSMVgf",
+    "testnetPubkey": "AxhZALsZdN9mSdD4gDqoTEf72xcHs8v2CAdEee8zaAQq",
+    "state": "Retired",
+    "sfdp2OnboardingEpoch": 735
+  },
+  {
     "mainnetBetaPubkey": "Ev3A9XZ19apPrJ6vmSfyBfhdprMZQ62cxNxqHy2YQmCM",
     "testnetPubkey": "HX6Ah9VWDhyGM4xBaizvZgqAwxPmYHWyFasnEQevjyBD",
     "state": "Retired",
@@ -22414,12 +22390,6 @@
     "testnetPubkey": "5vA7fod581F9YKFoDWspYbsBCu3C5kEy8qCL7z9Nfy7y",
     "state": "Rejected",
     "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "CnevKtH5zaThFqJmpWZSBzjEMY8bsWiVkkeP6GVSMVgf",
-    "testnetPubkey": "AxhZALsZdN9mSdD4gDqoTEf72xcHs8v2CAdEee8zaAQq",
-    "state": "Approved",
-    "sfdp2OnboardingEpoch": 735
   },
   {
     "mainnetBetaPubkey": "GagQoH1Pj8upM4xVcxvh7gic1JS9ygaYxjuyPeGbQHXW",
@@ -22998,14 +22968,14 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "FMffC8284MtSX8Njd6rysdetPWwGRJMSpcoNWxgdSSod",
-    "testnetPubkey": "4jiCTcvM5bFhngppb38aUKtJidrLaStVnq1abBihUzQH",
-    "state": "TestnetOnboarded",
+    "mainnetBetaPubkey": "3xhsy1FMJBw8TA1cBMfEwznw6FvifQ6MPEdwGAVj4wW3",
+    "testnetPubkey": "2F632yEAAWzyQUcJjHT5trBYrYM81SL9y4zRWnTYuWRw",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "3xhsy1FMJBw8TA1cBMfEwznw6FvifQ6MPEdwGAVj4wW3",
-    "testnetPubkey": "2F632yEAAWzyQUcJjHT5trBYrYM81SL9y4zRWnTYuWRw",
+    "mainnetBetaPubkey": "FMffC8284MtSX8Njd6rysdetPWwGRJMSpcoNWxgdSSod",
+    "testnetPubkey": "4jiCTcvM5bFhngppb38aUKtJidrLaStVnq1abBihUzQH",
     "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
@@ -23436,12 +23406,6 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "EguM3iWpmsfaLbrKtmcEXDqb4cAeV2WgkCuNq7EwM4h6",
-    "testnetPubkey": "CZG5ZrbLtASiJoPm984VxwaNKVmnb9SqRBPz6zipr6pr",
-    "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "3EBMcNaN37rrzxNwhYwnyanoiEBUcfdVwnaMepnLxwHA",
     "testnetPubkey": "8GTQaSkwCsQFbjtp3hCoJn2E6YdVESgtbBkYY5SpohEx",
     "state": "Retired",
@@ -23464,6 +23428,12 @@
     "testnetPubkey": "Ftms6EEKfgb3FfaoJJk6A42MqQXVcU15RcRa749LLikL",
     "state": "Rejected",
     "sfdp2OnboardingEpoch": 577
+  },
+  {
+    "mainnetBetaPubkey": "EguM3iWpmsfaLbrKtmcEXDqb4cAeV2WgkCuNq7EwM4h6",
+    "testnetPubkey": "CZG5ZrbLtASiJoPm984VxwaNKVmnb9SqRBPz6zipr6pr",
+    "state": "Retired",
+    "sfdp2OnboardingEpoch": null
   },
   {
     "mainnetBetaPubkey": "42QR6pYXPEDU9aLuLSsJfFZbTbxGY8yKh8mdroqSfdo7",
@@ -29208,12 +29178,6 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "EwbKQdQYMgnWBXTMuLcSZQdwdwrdc88P4wHgcajnRqnK",
-    "testnetPubkey": "SEKE8o3PcDSHVkhxGUY3T5UbvVjkiyv5UxEieQm7bNS",
-    "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "BkJXZCjMyuhvZaa3e8t7pFepKdbAqvP95zsPRoyhYPL3",
     "testnetPubkey": "6fF1R8nnNvyZyH72FVykJ9vVVNtm61na1j9usd3hKYyf",
     "state": "Rejected",
@@ -29290,6 +29254,12 @@
     "testnetPubkey": "8LknwWtMatn1uRenrXYzJS7MxQJXZ245dqTuQiD7wZtq",
     "state": "Rejected",
     "sfdp2OnboardingEpoch": 577
+  },
+  {
+    "mainnetBetaPubkey": "EwbKQdQYMgnWBXTMuLcSZQdwdwrdc88P4wHgcajnRqnK",
+    "testnetPubkey": "SEKE8o3PcDSHVkhxGUY3T5UbvVjkiyv5UxEieQm7bNS",
+    "state": "Retired",
+    "sfdp2OnboardingEpoch": null
   },
   {
     "mainnetBetaPubkey": "DqiwPWN8Xe1AtRbD3En5cB7rUhkAcjSa5PtpexwwRpg3",
@@ -30276,6 +30246,12 @@
     "sfdp2OnboardingEpoch": 577
   },
   {
+    "mainnetBetaPubkey": "DqQwxd2HaHoBVKqNwWjXzTA7egMrFtPkjXWSM2vvtCso",
+    "testnetPubkey": "4swxEpU9WWDT5ugdGxa4PpL3sqgkzB6v87ggNLcRRGK2",
+    "state": "Retired",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
     "mainnetBetaPubkey": "Hv6K6QcBAEziPJD7zT49YSpWQ51TFHrU5hxoK9L8Yopn",
     "testnetPubkey": "EZRZvDKGYwR9Wbwpsg6gw5F4MH3mNd5T6bpSffi9bbmG",
     "state": "TestnetOnboarded",
@@ -30302,12 +30278,6 @@
   {
     "mainnetBetaPubkey": "Am2QGbq4iq5evtYU5LgRJni6sxPzaCuAs3d2tsAG157J",
     "testnetPubkey": "21vkGb3AZY7YxTcnGuxmysKyHZhDg8SSymAJy8s9a7au",
-    "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "DqQwxd2HaHoBVKqNwWjXzTA7egMrFtPkjXWSM2vvtCso",
-    "testnetPubkey": "4swxEpU9WWDT5ugdGxa4PpL3sqgkzB6v87ggNLcRRGK2",
     "state": "TestnetOnboarded",
     "sfdp2OnboardingEpoch": null
   },
@@ -31454,7 +31424,7 @@
   {
     "mainnetBetaPubkey": "3LWQouByPC6U1Bpt7YVnq8ugWdBK3U47Z5A2TFpGdqHa",
     "testnetPubkey": "CzBYQLRTLNsvkVooBUa3rPHAtXkJ2TEHaqSERgwu44Ew",
-    "state": "TestnetOnboarded",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -32726,7 +32696,7 @@
   {
     "mainnetBetaPubkey": "2J8budsy6nsZHAL6Yj4SBMixJzPQi7fAtFRj5anWKjzU",
     "testnetPubkey": "9Mbfn5EnqkjepNbdnrusKPZKMZQkLT3oGhSJwmcd7GFU",
-    "state": "TestnetOnboarded",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -32910,12 +32880,6 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "H1dGnB1u5YVmSaNWXjkt4P3aNCvRKM835zYRQ2S684Eh",
-    "testnetPubkey": "7AFJvdGuuz69F4vKRiqgKX3n6qZmtXTUt1k8sDgSJroF",
-    "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "44Bivyyp6Jv3Wm4RfJdtpCPBmbEXxvyotUoMDg91ZJPo",
     "testnetPubkey": "A5TXyVrR7WwfNf2RjoN1W4Dw5CuuMDiLV9e77pWhmwAP",
     "state": "Rejected",
@@ -32925,6 +32889,12 @@
     "mainnetBetaPubkey": "9DVEidfnmM6JaugZrdpBzFk6w6QFzNyzjVXpxXBrs6ZS",
     "testnetPubkey": "82QNHsDhgqskMH9CSSbirM4f7LxTXyUFxus5XiZ5XbVS",
     "state": "Rejected",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "H1dGnB1u5YVmSaNWXjkt4P3aNCvRKM835zYRQ2S684Eh",
+    "testnetPubkey": "7AFJvdGuuz69F4vKRiqgKX3n6qZmtXTUt1k8sDgSJroF",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -33876,6 +33846,12 @@
     "sfdp2OnboardingEpoch": null
   },
   {
+    "mainnetBetaPubkey": "B4dn3WWS95M4qNXaR5NTdkNzhzvTZVqC13E3eLrWhXLa",
+    "testnetPubkey": "MNGyYCDsLQF14kBjqvYY3NoNv6yd9F4bEbhsehyMxKi",
+    "state": "Retired",
+    "sfdp2OnboardingEpoch": 644
+  },
+  {
     "mainnetBetaPubkey": "9g4XWkofDMLw4Z3HKtpTuRfbRKqoZyNstM9ym36wctav",
     "testnetPubkey": "59TSbYfnbb4zx4xf54ApjE8fJRhwzTiSjh9vdHfgyg1U",
     "state": "Rejected",
@@ -33892,12 +33868,6 @@
     "testnetPubkey": "4mchug1TCvHV7jzaTAoAMjXNq54NEK3AT7KZj1j329WA",
     "state": "Rejected",
     "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "B4dn3WWS95M4qNXaR5NTdkNzhzvTZVqC13E3eLrWhXLa",
-    "testnetPubkey": "MNGyYCDsLQF14kBjqvYY3NoNv6yd9F4bEbhsehyMxKi",
-    "state": "Approved",
-    "sfdp2OnboardingEpoch": 644
   },
   {
     "mainnetBetaPubkey": "GWaShg64vs2zvGNHb3uYyxFufvarp4iAUEjmVmXf5udw",
@@ -33978,16 +33948,16 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "4uH4G6YiD5G8rU3mtPg73C2Uqamrqedy3FboTZcZrh6x",
-    "testnetPubkey": "869wepRLmcurssCdkbp77vZo6HPKRmmPjnaV45XsAY4E",
-    "state": "Approved",
-    "sfdp2OnboardingEpoch": 706
-  },
-  {
     "mainnetBetaPubkey": "8QrDtzxE2EBioEyZbR7ew6FodKZUrp5bb5CXbbcUc8FZ",
     "testnetPubkey": "Hk86P6VepF1Xv7McHgPyina3Rx5nSruKoKGjGed2opnC",
     "state": "Rejected",
     "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "4uH4G6YiD5G8rU3mtPg73C2Uqamrqedy3FboTZcZrh6x",
+    "testnetPubkey": "869wepRLmcurssCdkbp77vZo6HPKRmmPjnaV45XsAY4E",
+    "state": "Rejected",
+    "sfdp2OnboardingEpoch": 706
   },
   {
     "mainnetBetaPubkey": "E6iXBoTWW2d26VWXnk1JDZp5mNXjceWeZGSsYiBAezWQ",
@@ -35574,14 +35544,14 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "C8UnubP11Q9w6FXdi6fqx1ZHah9cJ4Fp8gd1P2326s1H",
-    "testnetPubkey": "9udjGDQ1p9WAYh483abwXQG4Y8f8zAWar7v94Mv7NFbq",
-    "state": "TestnetOnboarded",
+    "mainnetBetaPubkey": "8vwmaCk4Gbu4Ukivn4ZLkJWQ3zi5wfxZKsQj9VQAGV7G",
+    "testnetPubkey": "CM7QQjEJzgh1zsVqHXExQQS5YmDHiY8wnRzqHRCgivc6",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "8vwmaCk4Gbu4Ukivn4ZLkJWQ3zi5wfxZKsQj9VQAGV7G",
-    "testnetPubkey": "CM7QQjEJzgh1zsVqHXExQQS5YmDHiY8wnRzqHRCgivc6",
+    "mainnetBetaPubkey": "C8UnubP11Q9w6FXdi6fqx1ZHah9cJ4Fp8gd1P2326s1H",
+    "testnetPubkey": "9udjGDQ1p9WAYh483abwXQG4Y8f8zAWar7v94Mv7NFbq",
     "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
@@ -35646,12 +35616,6 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "DWrcuWhL6FGCvSy1Bk7j943zDN8Gcci1Nwwx37SGtxjS",
-    "testnetPubkey": "3SYLpzwqoZbFiLSQALL8j5JdyfZZ4ZfEq6BM49dj4uN6",
-    "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "C6SvYxRb38o15jX1Yqw3K4Vx3VGKbQEPnTU1eJ189Xq2",
     "testnetPubkey": "BWcppbytWws8jSbeCZYNo6ntTdMLSQ2As9kqoUYfwTA5",
     "state": "Rejected",
@@ -35660,6 +35624,12 @@
   {
     "mainnetBetaPubkey": "GGDB6k3qNtPxVyjN7VsHvyn8z3wGRjYPfyMn1R67StLY",
     "testnetPubkey": "Bz7uH1cLw658eqicMEsgxvh8wu3YoEkcrMBwpW55WPFW",
+    "state": "Retired",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "DWrcuWhL6FGCvSy1Bk7j943zDN8Gcci1Nwwx37SGtxjS",
+    "testnetPubkey": "3SYLpzwqoZbFiLSQALL8j5JdyfZZ4ZfEq6BM49dj4uN6",
     "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
@@ -36306,12 +36276,6 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "EiiX4TkhxH7X12dgofeXJp2NaPGq91UyncerjFsYQxZb",
-    "testnetPubkey": "AnoziZZWpH5T2YX2SjJ1bEmGgKAk1mWttpKRJe8SwWYB",
-    "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "AidBsT89A5N53T4vRHT5r8E57dVwEoTpnaghZ5K3Ntcv",
     "testnetPubkey": "97HMrSf1xXNuP1XEXPBXq2eoXoNdU9fCJAwL6E5466Se",
     "state": "Rejected",
@@ -36381,6 +36345,12 @@
     "mainnetBetaPubkey": "EQg4RDmmNuu1qigKAzEtZo7YVaUaEu3mzvomUNoqnurd",
     "testnetPubkey": "8exVRinRkcsbTkup6KorAVsNBxYjBYHDCnvvxEhhcW3h",
     "state": "Rejected",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "EiiX4TkhxH7X12dgofeXJp2NaPGq91UyncerjFsYQxZb",
+    "testnetPubkey": "AnoziZZWpH5T2YX2SjJ1bEmGgKAk1mWttpKRJe8SwWYB",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -37644,12 +37614,6 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "ACTGYsH7bHbaSP7z9N86oLPHBThAELbGfTboc1VoFeZz",
-    "testnetPubkey": "BybZ3pFsgtVy9ygkEi5F7FVD4bo6wFzqyr2y2rYX9dMv",
-    "state": "Approved",
-    "sfdp2OnboardingEpoch": 580
-  },
-  {
     "mainnetBetaPubkey": "BU59WxdwbjvA14TKiTaXCsyqr1iouRNbC2RihtSWFkCU",
     "testnetPubkey": "8TwWbxXTqbYvckxQgBSeY3bP7czWfPRwwAsw4D67oYV4",
     "state": "Rejected",
@@ -37708,6 +37672,12 @@
     "testnetPubkey": "DjAw3BWyJzFaSq7donFgKBn4gtRzrZYoUq5uJpK1U6Td",
     "state": "Rejected",
     "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "ACTGYsH7bHbaSP7z9N86oLPHBThAELbGfTboc1VoFeZz",
+    "testnetPubkey": "BybZ3pFsgtVy9ygkEi5F7FVD4bo6wFzqyr2y2rYX9dMv",
+    "state": "Approved",
+    "sfdp2OnboardingEpoch": 580
   },
   {
     "mainnetBetaPubkey": "GV8UbqYXk4uMfmiYS5Cf59CRdGoQM2q7bHcW83zkkx9c",
@@ -38784,6 +38754,12 @@
     "sfdp2OnboardingEpoch": null
   },
   {
+    "mainnetBetaPubkey": "BLackZNnUFoMNrTr982ca8hx2MVQCRr4TExptAALGg4C",
+    "testnetPubkey": "DEFgjBS7c6dFGuzFWJs3xCQ9SXTR6XK4ZnPAwQhXoYc7",
+    "state": "Retired",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
     "mainnetBetaPubkey": "5gkccRMfAzY28SCrEZ6QSZPUB3dM2iLBG4ErR8ZLhVZC",
     "testnetPubkey": "4jiUYSWyWJZoVCUdgWc921wqqvH2zfVrS4JfYwuqiEbL",
     "state": "Rejected",
@@ -38810,12 +38786,6 @@
   {
     "mainnetBetaPubkey": "q4mtPAwkkh97eC6Lzt25d6AvZowv6imV1TR77nHxmH4",
     "testnetPubkey": "Bo9adYiiLm146CUnCTUX1t9qmSdAqsWpEM1pCj2uUfzx",
-    "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "BLackZNnUFoMNrTr982ca8hx2MVQCRr4TExptAALGg4C",
-    "testnetPubkey": "DEFgjBS7c6dFGuzFWJs3xCQ9SXTR6XK4ZnPAwQhXoYc7",
     "state": "TestnetOnboarded",
     "sfdp2OnboardingEpoch": null
   },
@@ -38964,6 +38934,12 @@
     "sfdp2OnboardingEpoch": null
   },
   {
+    "mainnetBetaPubkey": "8Zh5A5Hs6bJFAyWrLGMaF2VEUVbXFANtfuw7824Hd5XV",
+    "testnetPubkey": "FtDmMDMfJXkwLBezKg8EsCuDhgweu2avFVxBVsZzKsNR",
+    "state": "Rejected",
+    "sfdp2OnboardingEpoch": 577
+  },
+  {
     "mainnetBetaPubkey": "FcMt1yLFuPq7KyxqLxb726UxL2TvoTXFYLaXaJx9da5T",
     "testnetPubkey": "Cjtm2GSYvmCMynNQUxCJfo7kaq1vAtQviVMpZgRizoYc",
     "state": "Retired",
@@ -39022,12 +38998,6 @@
     "testnetPubkey": "ExGhBrgHk85zZfvzt5G7T1WeJxcYUwvsc4yUVibUyKye",
     "state": "Rejected",
     "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "8Zh5A5Hs6bJFAyWrLGMaF2VEUVbXFANtfuw7824Hd5XV",
-    "testnetPubkey": "FtDmMDMfJXkwLBezKg8EsCuDhgweu2avFVxBVsZzKsNR",
-    "state": "Approved",
-    "sfdp2OnboardingEpoch": 577
   },
   {
     "mainnetBetaPubkey": "99EVNDUh5wDHWPDjFLpkToqw1GrKgc7GrZg2uUZWoEKL",
@@ -40848,14 +40818,14 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "BLoCKXMCevc7US2c4x6JRswwiQn4cu3w6HwBbMaFgBsM",
-    "testnetPubkey": "8xTcvFguBVuwgjg81feo7ghdUd1Wu58xbuaRw3YfJAgV",
-    "state": "TestnetOnboarded",
+    "mainnetBetaPubkey": "GuLokogQNJDGEtQUd4pnZqQ81rZGULjxyxeZaXcoU7Kz",
+    "testnetPubkey": "exqw1DYMFmECYcsSQiiTJmVXboCBsUQp358N9nkViZB",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "GuLokogQNJDGEtQUd4pnZqQ81rZGULjxyxeZaXcoU7Kz",
-    "testnetPubkey": "exqw1DYMFmECYcsSQiiTJmVXboCBsUQp358N9nkViZB",
+    "mainnetBetaPubkey": "BLoCKXMCevc7US2c4x6JRswwiQn4cu3w6HwBbMaFgBsM",
+    "testnetPubkey": "8xTcvFguBVuwgjg81feo7ghdUd1Wu58xbuaRw3YfJAgV",
     "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
@@ -43848,12 +43818,6 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "KEYc8GxWsx1tCBtDXiRJbTdJon28Xnv3D5MixEgC2x7",
-    "testnetPubkey": "Hup8Nf8erbET2Cysja1FE2wRuhuSbtaXK32DyztFwnE5",
-    "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "FLBBsHDC7VKLR2MPNwGLP7cLPTKKw6AzQqQc9RhT2HgR",
     "testnetPubkey": "CamiBBoXgdDvb8uGq64HcqpDAciksQmvuMnSqUxGN73n",
     "state": "Retired",
@@ -43887,6 +43851,12 @@
     "mainnetBetaPubkey": "HDVf1Hn9LdyNNK4aoCaXfvSVmCFx3Lu1eFBS7acruHzh",
     "testnetPubkey": "FvVR4Fz6M4yaiwgUUrmm7DkVJKrfUNirNmGSgvZ2Kyw2",
     "state": "Rejected",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "KEYc8GxWsx1tCBtDXiRJbTdJon28Xnv3D5MixEgC2x7",
+    "testnetPubkey": "Hup8Nf8erbET2Cysja1FE2wRuhuSbtaXK32DyztFwnE5",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -44298,12 +44268,6 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "3F51Cz2NkbWi5ERq4BEn87sot7sq1svBy56NAVEXw8VW",
-    "testnetPubkey": "GaoDCAGtQjy7RbGyqLBrWkcrjXpDvEGeX1B5Fzymc6BJ",
-    "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "xTNp22KL86Q2eJSvUK6MCHV4zvJyJEm5uHsJqnySwns",
     "testnetPubkey": "yFNUpNFaUbQQS79biyJAao4c7dXgf7mQh7QGGKXMUCd",
     "state": "Rejected",
@@ -44367,6 +44331,12 @@
     "mainnetBetaPubkey": "GwqphYBEVsfGY9paEn1RAPKxzUpasxCb2Z5jiyHZaNzd",
     "testnetPubkey": "7N2tmS4edCuwP6BsyfWXUtDzwBFb8PmfZd5mhb6EYmD8",
     "state": "Rejected",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "3F51Cz2NkbWi5ERq4BEn87sot7sq1svBy56NAVEXw8VW",
+    "testnetPubkey": "GaoDCAGtQjy7RbGyqLBrWkcrjXpDvEGeX1B5Fzymc6BJ",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -46230,6 +46200,12 @@
     "sfdp2OnboardingEpoch": null
   },
   {
+    "mainnetBetaPubkey": "6MMvVR2UqSkHz5Drt4mmpaS3DBv8kvcrFuKh4sWNGCqD",
+    "testnetPubkey": "7FVCgatxKrX34VwM4YRhUVdXsJAoB5Kk3EGWW5M2Nqub",
+    "state": "Retired",
+    "sfdp2OnboardingEpoch": 577
+  },
+  {
     "mainnetBetaPubkey": "h929eBtru8jgHcuQgJeSvJJnpZNU4JwEYw3s2YQqEXj",
     "testnetPubkey": "HaDrjvGfvneb4Rs5LyUThKY7PEh9QyBKsZoi7jNcyune",
     "state": "Rejected",
@@ -46264,12 +46240,6 @@
     "testnetPubkey": "8PpjiFF9eMpuPHfSDLgFuQz3m2GDmQyo2u5KepoRkLvZ",
     "state": "Rejected",
     "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "6MMvVR2UqSkHz5Drt4mmpaS3DBv8kvcrFuKh4sWNGCqD",
-    "testnetPubkey": "7FVCgatxKrX34VwM4YRhUVdXsJAoB5Kk3EGWW5M2Nqub",
-    "state": "Approved",
-    "sfdp2OnboardingEpoch": 577
   },
   {
     "mainnetBetaPubkey": "8H8JWyAo1G97pjndvuCnG632gyKfFVwUuV3zGNk3Pxku",
@@ -47178,12 +47148,6 @@
     "sfdp2OnboardingEpoch": 577
   },
   {
-    "mainnetBetaPubkey": "DjFJQQzbvyqjYMzbWyZnbP7JzQCigk4gHnhBzVTB7wGm",
-    "testnetPubkey": "FXQdYdbdQcD5U68KVJQ4GbypfBeRqE2nhS6R8qXEiwCR",
-    "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "32ZZRim6rZCqfaqsTXZWV2UgHFaFh8TrVXC1jAs1CARq",
     "testnetPubkey": "42ByQVrn1Yn5S3ZTh8PZBeofSaAsFdRM24U2wHS6JgjN",
     "state": "Retired",
@@ -47211,6 +47175,12 @@
     "mainnetBetaPubkey": "8vLc98XXCRS3N2ey2sFtM2huPbSsEbvfTUSBq8Z13GpU",
     "testnetPubkey": "C44PMXGHRiE38JsWKb7F3ConJBTQnRUo95Wd1YeG2Ujk",
     "state": "Rejected",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "DjFJQQzbvyqjYMzbWyZnbP7JzQCigk4gHnhBzVTB7wGm",
+    "testnetPubkey": "FXQdYdbdQcD5U68KVJQ4GbypfBeRqE2nhS6R8qXEiwCR",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -47958,6 +47928,12 @@
     "sfdp2OnboardingEpoch": null
   },
   {
+    "mainnetBetaPubkey": "SNPRUBQxL9R2B9WX9B1Qt7xBRTASz4gePDpkxJWTZa4",
+    "testnetPubkey": "3gZdC5xeQQSiVVw19RvyKADsfga5ov5XSyPpLjQv7b2y",
+    "state": "Retired",
+    "sfdp2OnboardingEpoch": 699
+  },
+  {
     "mainnetBetaPubkey": "mcCoWaBqPWC1CDPTWLPGK16rkSp9qtGBnZGj5iaaLFz",
     "testnetPubkey": "Has5UpRZwnb7TrhyFPDETgnGThLPe38BiMcqkvXBLsra",
     "state": "Rejected",
@@ -48004,12 +47980,6 @@
     "testnetPubkey": "9gGa6bf5x7WZMaHMsWMBEzWetbt3kpjTzp3hiwQHdxSS",
     "state": "Rejected",
     "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "SNPRUBQxL9R2B9WX9B1Qt7xBRTASz4gePDpkxJWTZa4",
-    "testnetPubkey": "3gZdC5xeQQSiVVw19RvyKADsfga5ov5XSyPpLjQv7b2y",
-    "state": "Approved",
-    "sfdp2OnboardingEpoch": 699
   },
   {
     "mainnetBetaPubkey": "HNLDiu2bLqLLxTp2uD1dKUWV1xZd8fj61bobvgCkf2jg",
@@ -49038,6 +49008,12 @@
     "sfdp2OnboardingEpoch": null
   },
   {
+    "mainnetBetaPubkey": "6jMprKjLwc2ezd6VLmkUvGUZExEpnsUsjtK9Yd9Jb4xW",
+    "testnetPubkey": "5fJLCFaKYx3zAYETeWZK5vMRhQuTK79gpVJK6RYyRuen",
+    "state": "Rejected",
+    "sfdp2OnboardingEpoch": 754
+  },
+  {
     "mainnetBetaPubkey": "8aMr2kgvHvAZqSBEUP356VD4uanqAKZmvB4KiTJnrFxd",
     "testnetPubkey": "GL8k2CgUTKPtGCVrtook7LreRMnisxFLRQAqCfFcrYZA",
     "state": "Rejected",
@@ -49078,12 +49054,6 @@
     "testnetPubkey": "5kfpZfMwrY9uKSpNzL6Fgwp1x4dwmwt4K8TLFU4ArnWa",
     "state": "Rejected",
     "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "6jMprKjLwc2ezd6VLmkUvGUZExEpnsUsjtK9Yd9Jb4xW",
-    "testnetPubkey": "5fJLCFaKYx3zAYETeWZK5vMRhQuTK79gpVJK6RYyRuen",
-    "state": "Approved",
-    "sfdp2OnboardingEpoch": 754
   },
   {
     "mainnetBetaPubkey": "6U48N2DJPUxjh1ULTFEmN836NNfNWhPHoifDa7neeVkB",
@@ -52172,7 +52142,7 @@
   {
     "mainnetBetaPubkey": "3cxWQ8ukEZcPRhnrgQLv177YZJHkCPKypxbBUSjZQNKC",
     "testnetPubkey": "4nsbtsbEaXdgi7fQK7KNpVYrBC2vL1w67DZHJ8uxBsFj",
-    "state": "TestnetOnboarded",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -54408,6 +54378,12 @@
     "sfdp2OnboardingEpoch": 577
   },
   {
+    "mainnetBetaPubkey": "FLVgaCPvSGFguumN9ao188izB4K4rxSWzkHneQMtkwQJ",
+    "testnetPubkey": "8VBhxkJfcQcK1hAvHAXSLEyPcVLpTK2JHF8B4MrLi9Ng",
+    "state": "Approved",
+    "sfdp2OnboardingEpoch": 639
+  },
+  {
     "mainnetBetaPubkey": "4Gaoinv65E5SjvBVPmp83mtPEhd3MRqV29HzmsUXGBFC",
     "testnetPubkey": "3cSSak2ciYfei5STa8B5VGWD5MpSrubEpe6yHp46HDf7",
     "state": "Rejected",
@@ -54448,12 +54424,6 @@
     "testnetPubkey": "56J7p7ko1XZSAkXJNqpR4gMJADYNfzGQ7JHY1hvcPSee",
     "state": "Rejected",
     "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "FLVgaCPvSGFguumN9ao188izB4K4rxSWzkHneQMtkwQJ",
-    "testnetPubkey": "8VBhxkJfcQcK1hAvHAXSLEyPcVLpTK2JHF8B4MrLi9Ng",
-    "state": "Approved",
-    "sfdp2OnboardingEpoch": 639
   },
   {
     "mainnetBetaPubkey": "B121c49qRde5ZfPmJ7QHQwK8hb3Zz3YVYpgpT2iY9e3d",
@@ -55452,12 +55422,6 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "CPYyasmCQAPDi5g8iqSPPUH3SSzNxMbtPcQsqYywwpiL",
-    "testnetPubkey": "GqisGR37Mg3M5YL21hAEZw2GXwHBaJa7JtJ91ndLmWAL",
-    "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "2SQGCUtRKohEaoKo4gPJGuYCrWM9YD8mYuwmSE1wQV3j",
     "testnetPubkey": "7PXt5Em6Ckme6fgKNaN68Swu7FdZAzz9zhLYHJmWeQ6q",
     "state": "Retired",
@@ -55509,6 +55473,12 @@
     "mainnetBetaPubkey": "4ccN4NUC6mD39rqt5S2dsnVF5DNpC4gRCfhdAZFimypS",
     "testnetPubkey": "BrVXBdKUcq2tmjDodXNtiU19DZ1MiSyhMysw9nRhtU6A",
     "state": "Rejected",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "CPYyasmCQAPDi5g8iqSPPUH3SSzNxMbtPcQsqYywwpiL",
+    "testnetPubkey": "GqisGR37Mg3M5YL21hAEZw2GXwHBaJa7JtJ91ndLmWAL",
+    "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
   {
@@ -56832,6 +56802,12 @@
     "sfdp2OnboardingEpoch": null
   },
   {
+    "mainnetBetaPubkey": "Frdg1NUoQaaTmASWNTrtDrBU5PbTnWtUvtdCr1XPNn1c",
+    "testnetPubkey": "5pprCcv9RvsWdNM1nLmXx29QTsfRgL1rk5sciv8tMkn3",
+    "state": "Rejected",
+    "sfdp2OnboardingEpoch": 627
+  },
+  {
     "mainnetBetaPubkey": "7rxq9ZhSe2x4Y317iC4NsJthb1k565X4XXtPyFbLjNh4",
     "testnetPubkey": "889fcdhYYMw5XKdFN8HtiS5zhR2iA5QS2oQf2d9TstG6",
     "state": "Rejected",
@@ -56860,12 +56836,6 @@
     "testnetPubkey": "wtrb2i56dg3C8xP7W5fRWH43myK57ouUaQJB1ajtZtE",
     "state": "Approved",
     "sfdp2OnboardingEpoch": 577
-  },
-  {
-    "mainnetBetaPubkey": "Frdg1NUoQaaTmASWNTrtDrBU5PbTnWtUvtdCr1XPNn1c",
-    "testnetPubkey": "5pprCcv9RvsWdNM1nLmXx29QTsfRgL1rk5sciv8tMkn3",
-    "state": "Approved",
-    "sfdp2OnboardingEpoch": 627
   },
   {
     "mainnetBetaPubkey": "9ESK8RafYWe8jWDBQD2WKVtq6iiPwAZGbSJnxxnNxbzb",
@@ -57432,12 +57402,6 @@
     "sfdp2OnboardingEpoch": null
   },
   {
-    "mainnetBetaPubkey": "CbokDWD2WWtEXGX1RgAeUdhByvKtHtmMmyNixYC1WFAU",
-    "testnetPubkey": "AjgfW9BrU16NFRGbPHi3Xrs1W6KRAezPtSvfF7yK9WiG",
-    "state": "TestnetOnboarded",
-    "sfdp2OnboardingEpoch": null
-  },
-  {
     "mainnetBetaPubkey": "2vT1XhGUUWeVRP12RuKhqhbzac5oq1bK3bVga4E9jV6y",
     "testnetPubkey": "8Tm88BjGbP1c8khCnURhnwztxXYYWocR9ZmXQYk9erQb",
     "state": "Rejected",
@@ -57458,6 +57422,12 @@
   {
     "mainnetBetaPubkey": "7vSrWyin3BNxrF4tS9rL6rBhDGKKj2JYzsbHTFHrSjRq",
     "testnetPubkey": "EVh28qcL8TthYZB6rNFUxS7dfCDNrS8rn5igtCduQ8Hc",
+    "state": "Retired",
+    "sfdp2OnboardingEpoch": null
+  },
+  {
+    "mainnetBetaPubkey": "CbokDWD2WWtEXGX1RgAeUdhByvKtHtmMmyNixYC1WFAU",
+    "testnetPubkey": "AjgfW9BrU16NFRGbPHi3Xrs1W6KRAezPtSvfF7yK9WiG",
     "state": "Retired",
     "sfdp2OnboardingEpoch": null
   },
@@ -63864,6 +63834,12 @@
     "sfdp2OnboardingEpoch": 577
   },
   {
+    "mainnetBetaPubkey": "JC7bH7HSZoDhwggBXtRF31cVt71WiizY2J6YDDQfG5er",
+    "testnetPubkey": "9oKrJ9iiEnCC7bewcRFbcdo4LKL2PhUEqcu8gH2eDbVM",
+    "state": "Approved",
+    "sfdp2OnboardingEpoch": 577
+  },
+  {
     "mainnetBetaPubkey": "HcYS3M9PoRtTbnfNZcxHBuCV1SSqFdZwfbuoKKAPVvUN",
     "testnetPubkey": "5ou1iPypjG2YoRhXnNv34yxbALVs2zDK3njaM2XkkRp7",
     "state": "Rejected",
@@ -63898,12 +63874,6 @@
     "testnetPubkey": "93g4GeAVyKAWpzbcNAVTti6PidjBpAmhreG4QBvM3DXQ",
     "state": "Rejected",
     "sfdp2OnboardingEpoch": null
-  },
-  {
-    "mainnetBetaPubkey": "FnRqe316RrxVBv85EzMgcuWaVLZYYuyEq9znJnSZAu55",
-    "testnetPubkey": "9oKrJ9iiEnCC7bewcRFbcdo4LKL2PhUEqcu8gH2eDbVM",
-    "state": "Approved",
-    "sfdp2OnboardingEpoch": 577
   },
   {
     "mainnetBetaPubkey": "8QQn2KJcnMxZ3xHJQJMiyysyWx94mdNCBwoonT3YN9jQ",

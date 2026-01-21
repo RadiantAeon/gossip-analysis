@@ -289,21 +289,23 @@ fn analyze_gossip_files(
     let mut ips_map: HashMap<String, Vec<String>> = HashMap::new();
 
     for path in files {
-        let (_filename, nodes) = read_gossip_file(path)?;
+        if let Ok((_filename, nodes)) = read_gossip_file(path) {
+            for node in nodes.0.iter() {
+                let Some(ip) = node.ip_address.clone() else {
+                    continue;
+                };
+                let pubkey = node.identity_pubkey.clone();
+                let is_staked = staked_validators_map.contains_key(&pubkey);
 
-        for node in nodes.0.iter() {
-            let Some(ip) = node.ip_address.clone() else {
-                continue;
-            };
-            let pubkey = node.identity_pubkey.clone();
-            let is_staked = staked_validators_map.contains_key(&pubkey);
-
-            if is_staked {
-                let ips_for_pubkey = ips_map.entry(pubkey.clone()).or_default();
-                if !ips_for_pubkey.contains(&ip) {
-                    ips_for_pubkey.push(ip);
+                if is_staked {
+                    let ips_for_pubkey = ips_map.entry(pubkey.clone()).or_default();
+                    if !ips_for_pubkey.contains(&ip) {
+                        ips_for_pubkey.push(ip);
+                    }
                 }
             }
+        } else {
+            println!("warning -- unable to read gossip file at {:?}", path);
         }
     }
 
@@ -383,7 +385,7 @@ fn analyze_gossip_files(
                     "".to_string()
                 },
                 value: staked_node.activated_stake_ui.round() as u64,
-                info: staked_node.clone()
+                info: staked_node.clone(),
             });
         }
     }

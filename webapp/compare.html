@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataset Comparison Tool</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f7f8fa;
+            color: #1f2933;
+        }
+
+        .header {
+            background: white;
+            border: 1px solid #d2d6dc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.1);
+        }
+
+        .header h1 {
+            margin: 0 0 10px 0;
+            font-size: 24px;
+            color: #111827;
+        }
+
+        .header p {
+            margin: 0;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .summary-card {
+            background: white;
+            border: 1px solid #d2d6dc;
+            border-radius: 8px;
+            padding: 16px;
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.1);
+        }
+
+        .summary-card h3 {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            color: #6b7280;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .summary-card .value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 4px;
+        }
+
+        .summary-card .subtext {
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        .added { color: #10b981; }
+        .removed { color: #ef4444; }
+        .changed { color: #f59e0b; }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background: white;
+            border: 1px solid #d2d6dc;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .tab:hover {
+            background: #f9fafb;
+        }
+
+        .tab.active {
+            background: #111827;
+            color: white;
+            border-color: #111827;
+        }
+
+        .content-section {
+            display: none;
+            background: white;
+            border: 1px solid #d2d6dc;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.1);
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .search-box {
+            margin-bottom: 16px;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #d2d6dc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .item-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .item {
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 12px;
+            background: #f9fafb;
+        }
+
+        .item-title {
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 14px;
+            color: #111827;
+        }
+
+        .item-details {
+            font-size: 13px;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        .item-details div {
+            margin: 2px 0;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-right: 6px;
+        }
+
+        .badge-added { background: #d1fae5; color: #065f46; }
+        .badge-removed { background: #fee2e2; color: #991b1b; }
+        .badge-changed { background: #fef3c7; color: #92400e; }
+
+        .diff-value {
+            font-family: monospace;
+            font-size: 12px;
+        }
+
+        .export-btn {
+            padding: 10px 20px;
+            background: #111827;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .export-btn:hover {
+            background: #374151;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #6b7280;
+        }
+
+        .error {
+            background: #fee2e2;
+            border: 1px solid #fecaca;
+            color: #991b1b;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Dataset Comparison Tool</h1>
+        <p>Comparing sybil_analysis_output.json (Current) vs sybil_analysis_output_before.json (Before)</p>
+    </div>
+
+    <div id="loading" class="loading">Loading datasets...</div>
+    <div id="error" class="error" style="display: none;"></div>
+
+    <div id="content" style="display: none;">
+        <div class="summary">
+            <div class="summary-card">
+                <h3>Nodes Added</h3>
+                <div class="value added" id="nodes-added">0</div>
+                <div class="subtext">New validators in current</div>
+            </div>
+            <div class="summary-card">
+                <h3>Nodes Removed</h3>
+                <div class="value removed" id="nodes-removed">0</div>
+                <div class="subtext">Validators removed from before</div>
+            </div>
+            <div class="summary-card">
+                <h3>Nodes Changed</h3>
+                <div class="value changed" id="nodes-changed">0</div>
+                <div class="subtext">Validators with modifications</div>
+            </div>
+            <div class="summary-card">
+                <h3>Edges Added</h3>
+                <div class="value added" id="edges-added">0</div>
+                <div class="subtext">New connections</div>
+            </div>
+            <div class="summary-card">
+                <h3>Edges Removed</h3>
+                <div class="value removed" id="edges-removed">0</div>
+                <div class="subtext">Removed connections</div>
+            </div>
+            <div class="summary-card">
+                <h3>Total Nodes (Current)</h3>
+                <div class="value" id="total-current">0</div>
+                <div class="subtext">vs <span id="total-before">0</span> before</div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <div class="tab active" data-tab="added">Added Nodes</div>
+            <div class="tab" data-tab="removed">Removed Nodes</div>
+            <div class="tab" data-tab="changed">Changed Nodes</div>
+            <div class="tab" data-tab="edges-added">Added Edges</div>
+            <div class="tab" data-tab="edges-removed">Removed Edges</div>
+        </div>
+
+        <div id="tab-added" class="content-section active">
+            <button class="export-btn" onclick="exportToCSV('added')">Export to CSV</button>
+            <input type="text" class="search-box" placeholder="Search added nodes..." id="search-added" />
+            <div class="item-list" id="list-added"></div>
+        </div>
+
+        <div id="tab-removed" class="content-section">
+            <button class="export-btn" onclick="exportToCSV('removed')">Export to CSV</button>
+            <input type="text" class="search-box" placeholder="Search removed nodes..." id="search-removed" />
+            <div class="item-list" id="list-removed"></div>
+        </div>
+
+        <div id="tab-changed" class="content-section">
+            <button class="export-btn" onclick="exportToCSV('changed')">Export to CSV</button>
+            <input type="text" class="search-box" placeholder="Search changed nodes..." id="search-changed" />
+            <div class="item-list" id="list-changed"></div>
+        </div>
+
+        <div id="tab-edges-added" class="content-section">
+            <button class="export-btn" onclick="exportToCSV('edges-added')">Export to CSV</button>
+            <input type="text" class="search-box" placeholder="Search added edges..." id="search-edges-added" />
+            <div class="item-list" id="list-edges-added"></div>
+        </div>
+
+        <div id="tab-edges-removed" class="content-section">
+            <button class="export-btn" onclick="exportToCSV('edges-removed')">Export to CSV</button>
+            <input type="text" class="search-box" placeholder="Search removed edges..." id="search-edges-removed" />
+            <div class="item-list" id="list-edges-removed"></div>
+        </div>
+    </div>
+
+    <script>
+        let comparisonData = {
+            nodesAdded: [],
+            nodesRemoved: [],
+            nodesChanged: [],
+            edgesAdded: [],
+            edgesRemoved: []
+        };
+
+        async function loadDatasets() {
+            try {
+                const [currentResponse, beforeResponse] = await Promise.all([
+                    fetch('sybil_analysis_output.json'),
+                    fetch('sybil_analysis_output_before.json')
+                ]);
+
+                if (!currentResponse.ok || !beforeResponse.ok) {
+                    throw new Error('Failed to load one or both datasets');
+                }
+
+                const current = await currentResponse.json();
+                const before = await beforeResponse.json();
+
+                return { current, before };
+            } catch (error) {
+                showError('Error loading datasets: ' + error.message);
+                throw error;
+            }
+        }
+
+        function showError(message) {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('error').textContent = message;
+            document.getElementById('error').style.display = 'block';
+        }
+
+        function compareDatasets(current, before) {
+            const currentNodesMap = new Map(current.nodes.map(n => [n.id, n]));
+            const beforeNodesMap = new Map(before.nodes.map(n => [n.id, n]));
+
+            // Find added nodes
+            const nodesAdded = current.nodes.filter(n => !beforeNodesMap.has(n.id));
+
+            // Find removed nodes
+            const nodesRemoved = before.nodes.filter(n => !currentNodesMap.has(n.id));
+
+            // Find changed nodes
+            const nodesChanged = [];
+            current.nodes.forEach(currentNode => {
+                const beforeNode = beforeNodesMap.get(currentNode.id);
+                if (beforeNode) {
+                    const changes = getNodeChanges(currentNode, beforeNode);
+                    if (changes.length > 0) {
+                        nodesChanged.push({ node: currentNode, beforeNode, changes });
+                    }
+                }
+            });
+
+            // Compare edges
+            const currentEdgesSet = new Set(current.edges.map(e => `${e.from}-${e.to}`));
+            const beforeEdgesSet = new Set(before.edges.map(e => `${e.from}-${e.to}`));
+
+            const edgesAdded = current.edges.filter(e => !beforeEdgesSet.has(`${e.from}-${e.to}`));
+            const edgesRemoved = before.edges.filter(e => !currentEdgesSet.has(`${e.from}-${e.to}`));
+
+            return {
+                nodesAdded,
+                nodesRemoved,
+                nodesChanged,
+                edgesAdded,
+                edgesRemoved,
+                totalCurrent: current.nodes.length,
+                totalBefore: before.nodes.length,
+                currentNodesMap,
+                beforeNodesMap
+            };
+        }
+
+        function getNodeChanges(current, before) {
+            const changes = [];
+            const compareFields = ['value', 'group', 'title', 'image'];
+
+            compareFields.forEach(field => {
+                if (JSON.stringify(current[field]) !== JSON.stringify(before[field])) {
+                    changes.push({
+                        field,
+                        before: before[field],
+                        current: current[field]
+                    });
+                }
+            });
+
+            // Compare info object if exists
+            if (current.info || before.info) {
+                const currentInfo = current.info || {};
+                const beforeInfo = before.info || {};
+                
+                if (currentInfo.activated_stake_ui !== beforeInfo.activated_stake_ui) {
+                    changes.push({
+                        field: 'stake',
+                        before: beforeInfo.activated_stake_ui,
+                        current: currentInfo.activated_stake_ui
+                    });
+                }
+
+                if (currentInfo.jito_stake_ui !== beforeInfo.jito_stake_ui) {
+                    changes.push({
+                        field: 'jito_stake',
+                        before: beforeInfo.jito_stake_ui,
+                        current: currentInfo.jito_stake_ui
+                    });
+                }
+
+                if (currentInfo.sfdp_status !== beforeInfo.sfdp_status) {
+                    changes.push({
+                        field: 'sfdp_status',
+                        before: beforeInfo.sfdp_status,
+                        current: currentInfo.sfdp_status
+                    });
+                }
+            }
+
+            return changes;
+        }
+
+        function formatNodeInfo(node) {
+            const info = node.info || {};
+            const meta = info.info || {};
+            const parts = [];
+
+            if (meta.name) parts.push(meta.name);
+            if (info.identity_pubkey) parts.push(`Identity: ${info.identity_pubkey}`);
+            if (info.vote_account_pubkey) parts.push(`Vote: ${info.vote_account_pubkey}`);
+            if (info.activated_stake_ui) parts.push(`Stake: ${info.activated_stake_ui} SOL`);
+            if (info.jito_stakepool) parts.push('Jito Pool: Yes');
+            if (info.sfdp_participant) parts.push(`SFDP: ${info.sfdp_status || 'Participant'}`);
+
+            return parts;
+        }
+
+        function renderNodeItem(node, badge = null) {
+            const info = node.info || {};
+            const meta = info.info || {};
+            const name = meta.name || node.title || node.id || 'Unknown';
+            
+            return `
+                <div class="item">
+                    ${badge ? `<span class="badge badge-${badge}">${badge}</span>` : ''}
+                    <div class="item-title">${name}</div>
+                    <div class="item-details">
+                        ${formatNodeInfo(node).map(line => `<div>${line}</div>`).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderChangedNodeItem(data) {
+            const info = data.node.info || {};
+            const meta = info.info || {};
+            const name = meta.name || data.node.title || data.node.id || 'Unknown';
+            
+            return `
+                <div class="item">
+                    <span class="badge badge-changed">changed</span>
+                    <div class="item-title">${name}</div>
+                    <div class="item-details">
+                        ${formatNodeInfo(data.node).map(line => `<div>${line}</div>`).join('')}
+                        <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #e5e7eb;">
+                            <strong>Changes:</strong>
+                            ${data.changes.map(c => `
+                                <div class="diff-value">
+                                    ${c.field}: <span style="color: #ef4444;">${c.before || 'null'}</span> 
+                                    → <span style="color: #10b981;">${c.current || 'null'}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderEdgeItem(edge, nodesMap, badge = null) {
+            const fromNode = nodesMap.get(edge.from);
+            const toNode = nodesMap.get(edge.to);
+            const fromName = fromNode?.title || edge.from;
+            const toName = toNode?.title || edge.to;
+
+            return `
+                <div class="item">
+                    ${badge ? `<span class="badge badge-${badge}">${badge}</span>` : ''}
+                    <div class="item-title">Connection</div>
+                    <div class="item-details">
+                        <div><strong>From:</strong> ${fromName}</div>
+                        <div><strong>To:</strong> ${toName}</div>
+                        ${edge.value ? `<div><strong>Weight:</strong> ${edge.value}</div>` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderList(listId, items, renderFn) {
+            const listEl = document.getElementById(listId);
+            if (items.length === 0) {
+                listEl.innerHTML = '<div style="color: #6b7280; text-align: center; padding: 20px;">No items to display</div>';
+            } else {
+                listEl.innerHTML = items.map(renderFn).join('');
+            }
+        }
+
+        function setupSearch(searchId, listId, allItems, renderFn) {
+            const searchInput = document.getElementById(searchId);
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                if (!query) {
+                    renderList(listId, allItems, renderFn);
+                } else {
+                    const filtered = allItems.filter(item => {
+                        const searchText = JSON.stringify(item).toLowerCase();
+                        return searchText.includes(query);
+                    });
+                    renderList(listId, filtered, renderFn);
+                }
+            });
+        }
+
+        function exportToCSV(type) {
+            let data = [];
+            let headers = [];
+            let filename = '';
+
+            switch(type) {
+                case 'added':
+                    data = comparisonData.nodesAdded;
+                    headers = ['ID', 'Title', 'Identity', 'Vote Account', 'Stake (SOL)', 'Group', 'Jito Pool', 'SFDP Status'];
+                    filename = 'nodes_added.csv';
+                    break;
+                case 'removed':
+                    data = comparisonData.nodesRemoved;
+                    headers = ['ID', 'Title', 'Identity', 'Vote Account', 'Stake (SOL)', 'Group', 'Jito Pool', 'SFDP Status'];
+                    filename = 'nodes_removed.csv';
+                    break;
+                case 'changed':
+                    data = comparisonData.nodesChanged;
+                    headers = ['ID', 'Title', 'Identity', 'Changes'];
+                    filename = 'nodes_changed.csv';
+                    break;
+                case 'edges-added':
+                    data = comparisonData.edgesAdded;
+                    headers = ['From', 'To', 'Value'];
+                    filename = 'edges_added.csv';
+                    break;
+                case 'edges-removed':
+                    data = comparisonData.edgesRemoved;
+                    headers = ['From', 'To', 'Value'];
+                    filename = 'edges_removed.csv';
+                    break;
+            }
+
+            if (data.length === 0) {
+                alert('No data to export');
+                return;
+            }
+
+            let csvContent = headers.join(',') + '\n';
+
+            if (type === 'added' || type === 'removed') {
+                csvContent += data.map(node => {
+                    const info = node.info || {};
+                    return [
+                        node.id,
+                        (node.title || '').replace(/"/g, '""'),
+                        info.identity_pubkey || '',
+                        info.vote_account_pubkey || '',
+                        info.activated_stake_ui || '',
+                        node.group || '',
+                        info.jito_stakepool ? 'Yes' : 'No',
+                        info.sfdp_status || (info.sfdp_participant ? 'Participant' : 'No')
+                    ].map(f => `"${f}"`).join(',');
+                }).join('\n');
+            } else if (type === 'changed') {
+                csvContent += data.map(item => {
+                    const info = item.node.info || {};
+                    const changes = item.changes.map(c => `${c.field}: ${c.before} → ${c.current}`).join('; ');
+                    return [
+                        item.node.id,
+                        (item.node.title || '').replace(/"/g, '""'),
+                        info.identity_pubkey || '',
+                        changes.replace(/"/g, '""')
+                    ].map(f => `"${f}"`).join(',');
+                }).join('\n');
+            } else {
+                csvContent += data.map(edge => {
+                    return [edge.from, edge.to, edge.value || ''].map(f => `"${f}"`).join(',');
+                }).join('\n');
+            }
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Tab switching
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetTab = tab.dataset.tab;
+                
+                // Update active tab
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // Update active content
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.getElementById('tab-' + targetTab).classList.add('active');
+            });
+        });
+
+        // Initialize
+        (async function() {
+            try {
+                const { current, before } = await loadDatasets();
+                const comparison = compareDatasets(current, before);
+                
+                comparisonData = comparison;
+
+                // Update summary
+                document.getElementById('nodes-added').textContent = comparison.nodesAdded.length;
+                document.getElementById('nodes-removed').textContent = comparison.nodesRemoved.length;
+                document.getElementById('nodes-changed').textContent = comparison.nodesChanged.length;
+                document.getElementById('edges-added').textContent = comparison.edgesAdded.length;
+                document.getElementById('edges-removed').textContent = comparison.edgesRemoved.length;
+                document.getElementById('total-current').textContent = comparison.totalCurrent;
+                document.getElementById('total-before').textContent = comparison.totalBefore;
+
+                // Render lists
+                renderList('list-added', comparison.nodesAdded, node => renderNodeItem(node, 'added'));
+                renderList('list-removed', comparison.nodesRemoved, node => renderNodeItem(node, 'removed'));
+                renderList('list-changed', comparison.nodesChanged, renderChangedNodeItem);
+                renderList('list-edges-added', comparison.edgesAdded, edge => renderEdgeItem(edge, comparison.currentNodesMap, 'added'));
+                renderList('list-edges-removed', comparison.edgesRemoved, edge => renderEdgeItem(edge, comparison.beforeNodesMap, 'removed'));
+
+                // Setup search
+                setupSearch('search-added', 'list-added', comparison.nodesAdded, node => renderNodeItem(node, 'added'));
+                setupSearch('search-removed', 'list-removed', comparison.nodesRemoved, node => renderNodeItem(node, 'removed'));
+                setupSearch('search-changed', 'list-changed', comparison.nodesChanged, renderChangedNodeItem);
+                setupSearch('search-edges-added', 'list-edges-added', comparison.edgesAdded, edge => renderEdgeItem(edge, comparison.currentNodesMap, 'added'));
+                setupSearch('search-edges-removed', 'list-edges-removed', comparison.edgesRemoved, edge => renderEdgeItem(edge, comparison.beforeNodesMap, 'removed'));
+
+                // Show content
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+            } catch (error) {
+                console.error('Failed to initialize comparison tool:', error);
+            }
+        })();
+    </script>
+</body>
+</html>

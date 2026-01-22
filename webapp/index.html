@@ -108,6 +108,12 @@
     <div id="selected-nodes" style="position:absolute;top:16px;left:16px;bottom:16px;z-index:10;background:rgba(255,255,255,0.95);border:1px solid #d2d6dc;border-radius:8px;padding:12px 16px;box-shadow:0 4px 12px rgba(15, 23, 42, 0.15);min-width:320px;max-width:32%;display:flex;flex-direction:column;gap:10px;overflow-x:hidden;">
       <div style="font-weight:600;font-size:14px;">Selected Nodes</div>
       <div style="display:flex;align-items:center;gap:8px;">
+        <select id="data-source-selector" style="padding:8px;border:1px solid #d2d6dc;border-radius:6px;font-size:13px;background:#ffffff;cursor:pointer;">
+          <option value="sybil_analysis_output.json">Current Data</option>
+          <option value="sybil_analysis_output_before.json">Before Data</option>
+        </select>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
         <input id="search-input" type="text" placeholder="Search by node title…" style="flex:1;padding:8px;border:1px solid #d2d6dc;border-radius:6px;font-size:13px;box-sizing:border-box;display:block;" />
         <button id="export-csv" style="padding:8px 12px;font-size:12px;border:1px solid #d2d6dc;border-radius:6px;background:#f9fafb;color:#111827;cursor:pointer;white-space:nowrap;">Export CSV</button>
       </div>
@@ -343,63 +349,95 @@
         return onSelectHandler;
       }
 
-      fetch('sybil_analysis_output.json')
-        .then((response) => response.json())
-        .then((data) => {
-          const nodes = data.nodes;
-          const edges = data.edges;
-          let network = new vis.Network(container, { nodes, edges }, options);
+      let currentNetwork = null;
+      let currentOnSelectHandler = null;
+      let currentIdToTitle = null;
+      let searchTimer = null;
 
-          // Build a map from node id to node data for metadata lookup
-          const idToNodeMap = new Map();
-          nodes.forEach(n => idToNodeMap.set(n.id, n));
+      function loadData(dataSource) {
+        // Clear search input
+        const input = document.getElementById('search-input');
+        input.value = '';
 
-          // grab metadata
-          const onSelectHandler = populateMetadata(network, idToNodeMap);
-
-          // Build a map from node id to title for faster search
-          const idToTitle = new Map();
-          nodes.forEach(n => {
-            if (typeof n.title === 'string') {
-              idToTitle.set(n.id, n.title);
-            } else {
-              idToTitle.set(n.id, '');
+        fetch(dataSource)
+          .then((response) => response.json())
+          .then((data) => {
+            const nodes = data.nodes;
+            const edges = data.edges;
+            
+            // Destroy existing network if present
+            if (currentNetwork) {
+              currentNetwork.destroy();
             }
-          });
 
-          // Search functionality: match input text against node titles (case-insensitive)
-          const input = document.getElementById('search-input');
-          let searchTimer = null;
-          function performSearch(query) {
-            const q = (query || '').trim().toLowerCase();
-            if (!q) {
-              // clear selection when query is empty
-              network.unselectAll();
-              return;
-            }
-            const matchingIds = [];
-            idToTitle.forEach((title, id) => {
-              if (title.toLowerCase().includes(q)) {
-                matchingIds.push(id);
+            // Create new network
+            currentNetwork = new vis.Network(container, { nodes, edges }, options);
+
+            // Build a map from node id to node data for metadata lookup
+            const idToNodeMap = new Map();
+            nodes.forEach(n => idToNodeMap.set(n.id, n));
+
+            // grab metadata
+            currentOnSelectHandler = populateMetadata(currentNetwork, idToNodeMap);
+
+            // Build a map from node id to title for faster search
+            currentIdToTitle = new Map();
+            nodes.forEach(n => {
+              if (typeof n.title === 'string') {
+                currentIdToTitle.set(n.id, n.title);
+              } else {
+                currentIdToTitle.set(n.id, '');
               }
             });
-
-            if (matchingIds.length > 0) {
-              // Select nodes and center focus on selection
-              network.selectNodes(matchingIds, false);
-              network.focus(matchingIds[0], { scale: 1.0, animation: true });
-            } else {
-              // No matches: clear selection
-              network.unselectAll();
-            }
-            onSelectHandler({ nodes: matchingIds });
-          }
-
-          input.addEventListener('input', () => {
-            if (searchTimer) clearTimeout(searchTimer);
-            searchTimer = setTimeout(() => performSearch(input.value), 200);
+          })
+          .catch((error) => {
+            console.error('Error loading data:', error);
+            alert('Failed to load data from ' + dataSource);
           });
+      }
+
+      // Search functionality: match input text against node titles (case-insensitive)
+      const input = document.getElementById('search-input');
+      function performSearch(query) {
+        if (!currentNetwork || !currentIdToTitle || !currentOnSelectHandler) return;
+        
+        const q = (query || '').trim().toLowerCase();
+        if (!q) {
+          // clear selection when query is empty
+          currentNetwork.unselectAll();
+          return;
+        }
+        const matchingIds = [];
+        currentIdToTitle.forEach((title, id) => {
+          if (title.toLowerCase().includes(q)) {
+            matchingIds.push(id);
+          }
         });
+
+        if (matchingIds.length > 0) {
+          // Select nodes and center focus on selection
+          currentNetwork.selectNodes(matchingIds, false);
+          currentNetwork.focus(matchingIds[0], { scale: 1.0, animation: true });
+        } else {
+          // No matches: clear selection
+          currentNetwork.unselectAll();
+        }
+        currentOnSelectHandler({ nodes: matchingIds });
+      }
+
+      input.addEventListener('input', () => {
+        if (searchTimer) clearTimeout(searchTimer);
+        searchTimer = setTimeout(() => performSearch(input.value), 200);
+      });
+
+      // Data source selector
+      const selector = document.getElementById('data-source-selector');
+      selector.addEventListener('change', (e) => {
+        loadData(e.target.value);
+      });
+
+      // Load initial data
+      loadData('sybil_analysis_output.json');
     </script>
   </body>
 </html>

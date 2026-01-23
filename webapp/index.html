@@ -219,6 +219,34 @@
       #help-modal-close:hover {
         color: #374151;
       }
+
+      #footer {
+        position: absolute;
+        left: 50%;
+        bottom: 12px;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid #d2d6dc;
+        border-radius: 999px;
+        padding: 6px 12px;
+        font-size: 12px;
+        color: #6b7280;
+        z-index: 10;
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12);
+      }
+
+      #footer a {
+        color: #2563eb;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      #footer a:hover {
+        text-decoration: underline;
+      }
     </style>
   </head>
 
@@ -248,6 +276,11 @@
     </div>
     <div id="root"></div>
     <div id="metadata"></div>
+    <div id="footer">
+      <span>© 2026 David Chen</span>
+      <span>·</span>
+      <a href="https://github.com/dachen0/ssr" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
     
     <!-- Help Modal -->
     <div id="help-modal-overlay" class="visible">

@@ -119,6 +119,106 @@
         color: white;
         border-color: #059669;
       }
+
+      #help-btn {
+        padding: 8px 12px;
+        background: white;
+        border: 1px solid #d2d6dc;
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+
+      #help-btn:hover {
+        background: #f9fafb;
+        border-color: #9ca3af;
+      }
+
+      #help-modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 100;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #help-modal-overlay.visible {
+        display: flex;
+      }
+
+      #help-modal {
+        background: white;
+        border-radius: 12px;
+        padding: 24px;
+        max-width: 480px;
+        width: 90%;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        position: relative;
+      }
+
+      #help-modal h2 {
+        margin: 0 0 16px 0;
+        font-size: 18px;
+        color: #1f2933;
+      }
+
+      #help-modal .help-section {
+        margin-bottom: 16px;
+      }
+
+      #help-modal .help-section:last-of-type {
+        margin-bottom: 0;
+      }
+
+      #help-modal h3 {
+        margin: 0 0 8px 0;
+        font-size: 14px;
+        color: #374151;
+        font-weight: 600;
+      }
+
+      #help-modal p {
+        margin: 0;
+        font-size: 13px;
+        color: #6b7280;
+        line-height: 1.5;
+      }
+
+      #help-modal kbd {
+        display: inline-block;
+        padding: 2px 6px;
+        font-size: 12px;
+        font-family: monospace;
+        background: #f3f4f6;
+        border: 1px solid #d1d5db;
+        border-radius: 4px;
+        color: #374151;
+      }
+
+      #help-modal-close {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        color: #9ca3af;
+        padding: 4px 8px;
+        line-height: 1;
+      }
+
+      #help-modal-close:hover {
+        color: #374151;
+      }
     </style>
   </head>
 
@@ -136,6 +236,7 @@
           <option value="sybil_analysis_output_before.json">Before Data</option>
         </select>
         <button id="physics-toggle" class="active">Physics: ON</button>
+        <button id="help-btn">Help</button>
       </div>
       <div style="display:flex;align-items:center;gap:8px;">
         <input id="search-input" type="text" placeholder="Search by node title…" style="flex:1;padding:8px;border:1px solid #d2d6dc;border-radius:6px;font-size:13px;box-sizing:border-box;display:block;" />
@@ -147,6 +248,40 @@
     </div>
     <div id="root"></div>
     <div id="metadata"></div>
+    
+    <!-- Help Modal -->
+    <div id="help-modal-overlay" class="visible">
+      <div id="help-modal">
+        <button id="help-modal-close">&times;</button>
+        <h2>📖 Features Guide</h2>
+        
+        <div class="help-section">
+          <h3>🖱️ Select Multiple Nodes</h3>
+          <p>Hold <kbd>Shift</kbd> and <strong>drag</strong> to draw a selection box around multiple nodes.</p>
+        </div>
+        
+        <div class="help-section">
+          <h3>➕ Add to Selection</h3>
+          <p>Hold <kbd>Shift</kbd> and <strong>click</strong> individual nodes to add or remove them from your current selection.</p>
+        </div>
+        
+        <div class="help-section">
+          <h3>🔍 Search Nodes</h3>
+          <p>Use the search box to find and select nodes by their title. Matching nodes will be automatically selected and focused.</p>
+        </div>
+        
+        <div class="help-section">
+          <h3>📊 Export Data</h3>
+          <p>Click <strong>Export CSV</strong> to download information about all currently selected nodes.</p>
+        </div>
+        
+        <div class="help-section">
+          <h3>⚡ Physics Toggle</h3>
+          <p>Turn physics ON/OFF to control node movement. Physics auto-disables after 15 seconds for better performance.</p>
+        </div>
+      </div>
+    </div>
+    
     <script>
       const groupStyles = {
         JITO: { label: 'Jito pool', color: '#008000', border: 'darkgreen' },
@@ -486,6 +621,32 @@
             physicsToggle.textContent = 'Physics: OFF';
             physicsToggle.classList.remove('active');
           }
+        }
+      });
+
+      // Help modal functionality
+      const helpBtn = document.getElementById('help-btn');
+      const helpModalOverlay = document.getElementById('help-modal-overlay');
+      const helpModalClose = document.getElementById('help-modal-close');
+
+      helpBtn.addEventListener('click', () => {
+        helpModalOverlay.classList.add('visible');
+      });
+
+      helpModalClose.addEventListener('click', () => {
+        helpModalOverlay.classList.remove('visible');
+      });
+
+      helpModalOverlay.addEventListener('click', (e) => {
+        if (e.target === helpModalOverlay) {
+          helpModalOverlay.classList.remove('visible');
+        }
+      });
+
+      // Close modal with Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && helpModalOverlay.classList.contains('visible')) {
+          helpModalOverlay.classList.remove('visible');
         }
       });
 
